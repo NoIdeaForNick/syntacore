@@ -1,10 +1,10 @@
 `ifndef _INTERFACE
 `define _INTERFACE
 
-interface cross_bar_if;
-    localparam ADDR_WIDTH = 32;
-    localparam DATA_WIDTH = 32;
+localparam ADDR_WIDTH = 32;
+localparam DATA_WIDTH = 32;
 
+interface cross_bar_if;
     logic _req;
     logic [ADDR_WIDTH-1:0] _addr;
     logic _cmd;
