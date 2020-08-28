@@ -3,16 +3,16 @@ package connection_to_cross_bar_module;
 endpackage
 
 module cross_bar(   clk, rst_n,
-                    master_1_if, master_2_if,
-                    slave_1_if, slave_2_if
+                    master_0_if, master_1_if, master_2_if, master_3_if,
+                    slave_0_if, slave_1_if, slave_2_if, slave_3_if
 );
 
     import connection_to_cross_bar_module::cross_bar_if;
     import connection_to_cross_bar_module::ADDR_WIDTH;
     
     input logic clk, rst_n;
-    cross_bar_if.master master_1_if, master_2_if;
-    cross_bar_if.slave  slave_1_if, slave_2_if;
+    cross_bar_if.master master_0_if, master_1_if, master_2_if, master_3_if;
+    cross_bar_if.slave slave_0_if, slave_1_if, slave_2_if, slave_3_if;
 
     wire [1:0] requests_to_slave_1 = { ~master_2_if._addr[ADDR_WIDTH-1] && master_2_if._req,
                                        ~master_1_if._addr[ADDR_WIDTH-1] && master_1_if._req};

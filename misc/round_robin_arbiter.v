@@ -4,20 +4,22 @@ module round_robin_arbiter (
 	rst_an,
 	clk,
 	req,
-	grant
+	grant,
+	ack
 );
 
 
-input		rst_an;
-input		clk;
-input	[3:0]	req;
-output	[3:0]	grant;
+input	logic			rst_an;
+input	logic			clk;
+input 	logic	[3:0]	req;
+output	logic	[3:0]	grant;
+input 	logic	[3:0]	ack;
 
-reg	[1:0]	rotate_ptr;
-reg	[3:0]	shift_req;
-reg	[3:0]	shift_grant;
-reg	[3:0]	grant_comb;
-reg	[3:0]	grant;
+logic	[1:0]	rotate_ptr;
+logic	[3:0]	shift_req;
+logic	[3:0]	shift_grant;
+logic	[3:0]	grant_comb;
+logic	[3:0]	grant;
 
 // shift req to round robin the current priority
 always @ (*)
@@ -50,13 +52,14 @@ begin
 		2'b11: grant_comb[3:0] = {shift_grant[0],shift_grant[3:1]};
 	endcase
 end
-
+assign grant = grant_comb;
+/*
 always @ (posedge clk or negedge rst_an)
 begin
 	if (!rst_an)	grant[3:0] <= 4'b0;
-	else		grant[3:0] <= grant_comb[3:0] & ~grant[3:0];
+	else		grant[3:0] <= grant_comb[3:0];//grant_comb[3:0] & ~grant[3:0];
 end
-
+*/
 // update the rotate pointer
 // rotate pointer will move to the one after the current granted
 always @ (posedge clk or negedge rst_an)
@@ -65,10 +68,10 @@ begin
 		rotate_ptr[1:0] <= 2'b0;
 	else 
 		case (1'b1) // synthesis parallel_case
-			grant[0]: rotate_ptr[1:0] <= 2'd1;
-			grant[1]: rotate_ptr[1:0] <= 2'd2;
-			grant[2]: rotate_ptr[1:0] <= 2'd3;
-			grant[3]: rotate_ptr[1:0] <= 2'd0;
+			grant[0] & ack[0]: rotate_ptr[1:0] <= 2'd1;
+			grant[1] & ack[1]: rotate_ptr[1:0] <= 2'd2;
+			grant[2] & ack[2]: rotate_ptr[1:0] <= 2'd3;
+			grant[3] & ack[3]: rotate_ptr[1:0] <= 2'd0;
 		endcase
 end
 endmodule
