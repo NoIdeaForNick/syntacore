@@ -31,5 +31,6 @@
 *.backup
 *.sof
 
-
+prj/quartus/db
+prj/quartus/incremental_db
 

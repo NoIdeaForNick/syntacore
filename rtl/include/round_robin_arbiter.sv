@@ -1,3 +1,6 @@
+`ifndef RR_ARBITER
+`define RR_ARBITER
+
 //Rotate -> Priority -> Rotate
 module round_robin_arbiter (
 	rst_an,
@@ -12,7 +15,7 @@ module round_robin_arbiter (
     input	logic			clk;
     input 	logic	[3:0]	req;
     output	logic	[3:0]	grant;
-    input 	logic	[3:0]	ack;
+    input 	logic	    	ack;
 
     logic	[1:0]	rotate_ptr;
     logic	[3:0]	shift_req;
@@ -37,40 +40,45 @@ module round_robin_arbiter (
 
     // simple priority arbiter
     always_comb
-    begin
-        shift_grant[3:0] = 4'b0;
+    begin                
         if(shift_req)
+        begin
+            shift_grant = 0;            
             priority case(1'b1)
                 shift_req[0]: shift_grant[0] = 1'b1;
                 shift_req[1]: shift_grant[1] = 1'b1;
                 shift_req[2]: shift_grant[2] = 1'b1;
                 shift_req[3]: shift_grant[3] = 1'b1;
             endcase
+        end    
+        else shift_grant = 0;    
     end
 
     // generate grant signal
-    always_comb
-    begin
-        unique case (rotate_ptr[1:0])
-            2'b00: grant[3:0] <= shift_grant[3:0];
-            2'b01: grant[3:0] <= {shift_grant[2:0],shift_grant[3]};
-            2'b10: grant[3:0] <= {shift_grant[1:0],shift_grant[3:2]};
-            2'b11: grant[3:0] <= {shift_grant[0],shift_grant[3:1]};
-        endcase
-    end
+    always @(posedge clk, negedge rst_an)
+        if(~rst_an) grant <= 0;
+        else
+        begin
+            unique case (rotate_ptr[1:0])
+                2'b00: grant[3:0] <= shift_grant[3:0];
+                2'b01: grant[3:0] <= {shift_grant[2:0],shift_grant[3]};
+                2'b10: grant[3:0] <= {shift_grant[1:0],shift_grant[3:2]};
+                2'b11: grant[3:0] <= {shift_grant[0],shift_grant[3:1]};
+            endcase
+        end
 
     // update the rotate pointer
     // rotate pointer will set to the one after the current granted
-    always @(posedge clk, negedge rst_an)
-    begin
-        if (!rst_an)
-            rotate_ptr[1:0] <= 0;
-        else 
-            case (1'b1) // synthesis parallel_case
-                grant[0] & ack[0]: rotate_ptr[1:0] <= 2'd1;
-                grant[1] & ack[1]: rotate_ptr[1:0] <= 2'd2;
-                grant[2] & ack[2]: rotate_ptr[1:0] <= 2'd3;
-                grant[3] & ack[3]: rotate_ptr[1:0] <= 2'd0;
-            endcase
-    end
+    always @(posedge clk, negedge rst_an)    
+        if (~rst_an) rotate_ptr <= 0;
+        else
+            if(ack && grant) 
+               priority case (1'b1)
+                    grant[0]: rotate_ptr[1:0] <= 2'd1;
+                    grant[1]: rotate_ptr[1:0] <= 2'd2;
+                    grant[2]: rotate_ptr[1:0] <= 2'd3;
+                    grant[3]: rotate_ptr[1:0] <= 2'd0;
+                endcase
 endmodule
+
+`endif
