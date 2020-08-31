@@ -7,7 +7,7 @@ module round_robin_arbiter (
 	clk,
 	req,
 	grant,
-	ack
+	session_is_finished
 );
 
 
@@ -15,7 +15,7 @@ module round_robin_arbiter (
     input	logic			clk;
     input 	logic	[3:0]	req;
     output	logic	[3:0]	grant;
-    input 	logic	    	ack;
+    input 	logic	    	session_is_finished;
 
     logic	[1:0]	rotate_ptr;
     logic	[3:0]	shift_req;
@@ -58,21 +58,19 @@ module round_robin_arbiter (
     always @(posedge clk, negedge rst_an)
         if(~rst_an) grant <= 0;
         else
-        begin
             unique case (rotate_ptr[1:0])
                 2'b00: grant[3:0] <= shift_grant[3:0];
                 2'b01: grant[3:0] <= {shift_grant[2:0],shift_grant[3]};
                 2'b10: grant[3:0] <= {shift_grant[1:0],shift_grant[3:2]};
                 2'b11: grant[3:0] <= {shift_grant[0],shift_grant[3:1]};
             endcase
-        end
 
     // update the rotate pointer
     // rotate pointer will set to the one after the current granted
     always @(posedge clk, negedge rst_an)    
         if (~rst_an) rotate_ptr <= 0;
         else
-            if(ack && grant) 
+            if(session_is_finished && grant) 
                priority case (1'b1)
                     grant[0]: rotate_ptr[1:0] <= 2'd1;
                     grant[1]: rotate_ptr[1:0] <= 2'd2;

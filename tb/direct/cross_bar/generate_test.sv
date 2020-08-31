@@ -1,6 +1,5 @@
 timeunit 1ns;
 timeprecision 1ns;
-`include "../../../rtl/include/interface.sv" 
 
 module tb_generate;
 
@@ -19,6 +18,7 @@ module tb_generate;
     end
 
     initial begin
+        rst_n = 1;
         ResetMasterIf(master_0_if);
         ResetMasterIf(master_1_if);
         ResetMasterIf(master_2_if);
@@ -29,19 +29,29 @@ module tb_generate;
         ResetSlaveIf(slave_3_if);
 
         @(posedge clk);
-        master_0_if._req <= 1;
-        master_0_if._addr <= {2'b01, 30'b0};
-        master_0_if._cmd <= 1;
-        master_0_if._wdata <= 5;
+        master_3_if._req <= 1;
+        master_3_if._addr <= {2'b11, 30'b0};
+        master_3_if._cmd <= 1;
+        master_3_if._wdata <= 5;
 
-        @(posedge clk);
-        $display("master_request[3] = %d", DUT.master_request[3]);
-        $display("requests_to_all_arbiters_from_all_masters[0] = %d", requests_to_all_arbiters_from_all_masters[0]);
+        master_1_if._req <= 1;
+        master_1_if._addr <= {2'b11, 30'b0};
+        master_1_if._cmd <= 1;
+        master_1_if._wdata <= 5;
+
     end
 
 
+    logic [3:0] grant_from_arbiter_to_slave [3:0];
     logic [3:0] requests_to_all_arbiters_from_all_masters [3:0];
+    assign grant_from_arbiter_to_slave = DUT.grant_from_arbiter_to_slave;
     assign requests_to_all_arbiters_from_all_masters = DUT.requests_to_all_arbiters_from_all_masters;
+
+    logic [3:0] slave0, slave1, slave2, slave3;
+    assign  slave0 = DUT.slave0,
+            slave1 = DUT.slave1,
+            slave2 = DUT.slave2,
+            slave3 = DUT.slave3;
 
 
     task ResetMasterIf(virtual cross_bar_if.master _if);

@@ -4,13 +4,13 @@ logic		    rst_an;
 logic		    clk;
 logic	    	req0, req1, req2, req3;
 logic	    	grant0, grant1, grant2, grant3;
-logic           ack;
+logic           session_is_finished;
 
 round_robin_arbiter DUT(.rst_an(rst_an),
                         .clk(clk),
                         .req({req3, req2, req1, req0}),
                         .grant({grant3, grant2, grant1, grant0}),
-                        .ack(ack));
+                        .session_is_finished(session_is_finished));
 
 initial begin
     clk = 0;
@@ -18,7 +18,7 @@ initial begin
 end
 
 initial begin
-    ack = 0;
+    session_is_finished = 0;
     req0 = 0;
     req1 = 0;
     req2 = 0;
@@ -34,12 +34,12 @@ initial begin
     repeat(5) @(posedge clk);
     req2 <= 1;
     req3 <= 1;
-    ack <= 1;
+    session_is_finished <= 1;
     @(posedge clk);
     req0 <= 0;
-    ack <= 0;
+    session_is_finished <= 0;
     repeat(5) @(posedge clk);
-    ack <= 1;
+    session_is_finished <= 1;
 
 
     

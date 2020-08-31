@@ -1,12 +1,12 @@
 `include "include/interface.sv"
 `include "include/request_listener.sv"
 `include "include/round_robin_arbiter.sv"
+`include "include/response_fsm.sv"
 
 module cross_bar(   
     input logic clk, rst_n,     
     cross_bar_if.master master_0_if, master_1_if, master_2_if, master_3_if, //4 masters
-    cross_bar_if.slave slave_0_if, slave_1_if, slave_2_if, slave_3_if,      //4 slaves
-    output logic [3:0] debug[4]
+    cross_bar_if.slave slave_0_if, slave_1_if, slave_2_if, slave_3_if       //4 slaves
 );
 
     import interface_connection::ADDR_WIDTH;
@@ -41,30 +41,33 @@ module cross_bar(
     }; //1 bit request from 4 masters
     
     /*
+             arbiters
         [A3, A2, A1, A0] <- Master 0 requests
         [A3, A2, A1, A0] <- Master 1 requests
         [A3, A2, A1, A0] <- Master 2 requests
         [A3, A2, A1, A0] <- Master 3 requests
+
+        for instance, requests_to_all_arbiters_from_all_masters[0] = 4'b0010 -----> means that master 0 asked request to slave 1
     */                                        
     wire [QTY_OF_DEVICES-1:0] requests_to_all_arbiters_from_all_masters [QTY_OF_DEVICES]; //4 arbiters from 4 masters. matrix
+
+    /*
+             masters
+        [M3, M2, M1, M0] <- Slave 0 grant
+        [M3, M2, M1, M0] <- Slave 1 grant
+        [M3, M2, M1, M0] <- Slave 2 grant
+        [M3, M2, M1, M0] <- Slave 3 grant
+        
+        for instance, grant_from_arbiter_to_slave[1] = 4'b0001 ----> means that slave 1 (addr = x01) grants access from master 0
+    */
     wire [QTY_OF_DEVICES-1:0] grant_from_arbiter_to_slave [QTY_OF_DEVICES]; //4 signals grant (from each master) to single slave x 4 slaves
     
-    /*
-        [ack] <- Slave 0
-        [ack] <- Slave 1
-        [ack] <- Slave 2
-        [ack] <- Slave 3
-    */
-    wire slave_ack [QTY_OF_DEVICES] = '{
-        slave_0_if._ack,
-        slave_1_if._ack,
-        slave_2_if._ack,
-        slave_3_if._ack
-    };
+    wire session_with_slave_finished [QTY_OF_DEVICES];
 
     generate
         genvar i;
 
+        //master's request listeners
         for(i=0; i<QTY_OF_DEVICES; ++i)
         begin: master
             master_request_listener  #(
@@ -78,75 +81,35 @@ module cross_bar(
             );
         end
 
+        //arbiters for each slave
         for(i=0; i<QTY_OF_DEVICES; ++i)
         begin: arbiter
             round_robin_arbiter round_robin_arbiter_inst (
                 .rst_an(rst_n),
                 .clk(clk),
                 .req({
-                    requests_to_all_arbiters_from_all_masters[3][i],
-                    requests_to_all_arbiters_from_all_masters[2][i],
-                    requests_to_all_arbiters_from_all_masters[1][i],
-                    requests_to_all_arbiters_from_all_masters[0][i],
+                    requests_to_all_arbiters_from_all_masters[QTY_OF_DEVICES-1][i],
+                    requests_to_all_arbiters_from_all_masters[QTY_OF_DEVICES-2][i],
+                    requests_to_all_arbiters_from_all_masters[QTY_OF_DEVICES-3][i],
+                    requests_to_all_arbiters_from_all_masters[QTY_OF_DEVICES-4][i]
                 }),
                 .grant(grant_from_arbiter_to_slave[i]),
-                .ack(slave_ack[i])
+                .session_is_finished(session_with_slave_finished[i])
             );
         end
+
+        //grant signal parsers
     endgenerate   
-   
+
+
+    logic [3:0] slave0, slave1, slave2, slave3;
     always @(posedge clk)
     begin
-        debug[0] <= grant_from_arbiter_to_slave[0];
-        debug[1] <= grant_from_arbiter_to_slave[1];
-        debug[2] <= grant_from_arbiter_to_slave[2];
-        debug[3] <= grant_from_arbiter_to_slave[3];
+        slave0 <= grant_from_arbiter_to_slave[0];
+        slave1 <= grant_from_arbiter_to_slave[1];
+        slave2 <= grant_from_arbiter_to_slave[2];
+        slave3 <= grant_from_arbiter_to_slave[3];
     end
-/*
-    typedef enum int {enWAITING_FOR_REQUEST, enWAITING_FOR_ACK, enREADING_DATA_FROM_SLAVE} slave_state_t;
-    slave_state_t slave_1_state, slave_2_state;
 
-    //slave 1 FSM
-    always @(posedge clk, negedge rst_n)
-    if(~rst_n)
-    begin
-        
-    end
-    else
-    begin
-        unique case(slave_1_state)
 
-            enWAITING_FOR_REQUEST:
-            begin
-                if(|requests_to_slave_1)
-                begin
-                    priority case(1'b1)
-
-                        requests_to_slave_1[0]:
-                        begin
-                             <= master_1_if._addr;
-                        end
-
-                        requests_to_slave_1[1]:
-                        begin
-                            
-                        end
-
-                    endcase
-                end
-            end
-
-            enWAITING_FOR_ACK:
-            begin
-                
-            end
-
-            enREADING_DATA_FROM_SLAVE:
-            begin
-                
-            end
-
-        endcase
-    end    
-*/
 endmodule

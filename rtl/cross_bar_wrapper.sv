@@ -56,7 +56,16 @@ module cross_bar_wrapper(
     slave_0_rdata,
     slave_1_rdata,
     slave_2_rdata,
-    slave_3_rdata
+    slave_3_rdata,
+    //resp
+    master_0_resp,
+    master_1_resp,
+    master_2_resp,
+    master_3_resp,
+    slave_0_resp,
+    slave_1_resp,
+    slave_2_resp,
+    slave_3_resp
 );
 
     import interface_connection::ADDR_WIDTH;
@@ -117,6 +126,15 @@ module cross_bar_wrapper(
     input   logic [DATA_WIDTH-1:0]  slave_1_rdata;
     input   logic [DATA_WIDTH-1:0]  slave_2_rdata;
     input   logic [DATA_WIDTH-1:0]  slave_3_rdata;
+    //resp
+    output  logic   master_0_resp;
+    output  logic   master_1_resp;
+    output  logic   master_2_resp;
+    output  logic   master_3_resp;
+    input   logic   slave_0_resp;   
+    input   logic   slave_1_resp;
+    input   logic   slave_2_resp;
+    input   logic   slave_3_resp;    
 
 
     cross_bar_if master_0_if(), master_1_if(), master_2_if(), master_3_if();
@@ -174,8 +192,16 @@ module cross_bar_wrapper(
             slave_0_if._rdata = slave_0_rdata,
             slave_1_if._rdata = slave_1_rdata,
             slave_2_if._rdata = slave_2_rdata,
-            slave_3_if._rdata = slave_3_rdata;                             
+            slave_3_if._rdata = slave_3_rdata;
 
+    assign  master_0_resp = master_0_if._resp,
+            master_1_resp = master_1_if._resp,
+            master_2_resp = master_2_if._resp,
+            master_3_resp = master_3_if._resp,                                            
+            slave_0_if._resp = slave_0_resp,
+            slave_1_if._resp = slave_1_resp,
+            slave_2_if._resp = slave_2_resp,
+            slave_3_if._resp = slave_3_resp;
 
     cross_bar cross_bar_inst(
         clk, rst_n, 

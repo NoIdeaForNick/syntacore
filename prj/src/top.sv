@@ -59,7 +59,16 @@ module top(
     slave_0_rdata_virtual,
     slave_1_rdata_virtual,
     slave_2_rdata_virtual,
-    slave_3_rdata_virtual
+    slave_3_rdata_virtual,
+    //resp
+    master_0_resp_virtual,
+    master_1_resp_virtual,
+    master_2_resp_virtual,
+    master_3_resp_virtual,
+    slave_0_resp_virtual,
+    slave_1_resp_virtual,
+    slave_2_resp_virtual,
+    slave_3_resp_virtual
 );
 
     import interface_connection::ADDR_WIDTH;
@@ -122,6 +131,15 @@ module top(
     input   logic [DATA_WIDTH-1:0]  slave_1_rdata_virtual;
     input   logic [DATA_WIDTH-1:0]  slave_2_rdata_virtual;
     input   logic [DATA_WIDTH-1:0]  slave_3_rdata_virtual;
+    //resp
+    output  logic   master_0_resp_virtual;
+    output  logic   master_1_resp_virtual;
+    output  logic   master_2_resp_virtual;
+    output  logic   master_3_resp_virtual;
+    input   logic   slave_0_resp_virtual;
+    input   logic   slave_1_resp_virtual;
+    input   logic   slave_2_resp_virtual;
+    input   logic   slave_3_resp_virtual;   
 
     //****************WIRES TO MODULE**************
     logic   master_0_req;
@@ -236,6 +254,15 @@ module top(
         slave_0_rdata <= slave_0_rdata_virtual;
         slave_1_rdata <= slave_1_rdata_virtual;
         slave_2_rdata <= slave_2_rdata_virtual;
-        slave_3_rdata <= slave_3_rdata_virtual;                                                                                     
+        slave_3_rdata <= slave_3_rdata_virtual;
+
+        master_0_resp_virtual <= master_0_resp;
+        master_1_resp_virtual <= master_1_resp;
+        master_2_resp_virtual <= master_2_resp;
+        master_3_resp_virtual <= master_3_resp;
+        slave_0_resp <= slave_0_resp_virtual;
+        slave_1_resp <= slave_1_resp_virtual;
+        slave_2_resp <= slave_2_resp_virtual;
+        slave_3_resp <= slave_3_resp_virtual;                                                                                              
     end
 endmodule
