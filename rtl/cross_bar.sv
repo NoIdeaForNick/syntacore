@@ -1,7 +1,7 @@
 `include "include/interface.sv"
 `include "include/request_listener.sv"
 `include "include/round_robin_arbiter.sv"
-`include "include/response_fsm.sv"
+`include "include/response_parser.sv"
 
 module cross_bar(   
     input logic clk, rst_n,     
