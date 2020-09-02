@@ -1,27 +1,63 @@
-`ifndef RESPONSE_FSM
-`define RESPONSE_FSM
+`ifndef RESPONSE_PARSER
+`define RESPONSE_PARSER
 
 `define DEBUG
 
-module slave_response_parser #(   
+
+package mux_demux_connection;
+    import interface_connection::ADDR_WIDTH;
+    import interface_connection::DATA_WIDTH;
+
+    typedef struct packed {
+        logic req;
+        logic [ADDR_WIDTH-1:0] addr;
+        logic cmd;
+        logic [DATA_WIDTH-1:0] wdata;
+    } master_to_slave_data_t;
+
+    typedef struct packed {
+        logic ack;
+        logic resp;
+        logic [DATA_WIDTH-1:0] rdata;
+    } slave_to_master_data_t;
+endpackage
+
+
+module master_demux #(   
+    parameter QTY_OF_DEVICES = 4
+)(  
+    granted_master,
+    master_if,
+    slave_to_master_0, slave_to_master_1, slave_to_master_2, slave_to_master_3
+);
+
+
+endmodule: master_demux
+
+
+module slave_mux #(   
     parameter QTY_OF_DEVICES = 4
 )(  
     clk,
     rst_n,
     granted_master,
-    master_0_if, master_1_if, master_2_if, master_3_if,
-    slave_0_if,
+    master_0_to_slave, master_1_to_slave, master_2_to_slave, master_3_to_slave,
+    slave_to_master,
+    slave_if,
     session_is_finished
 );
+    import mux_demux_connection::master_to_slave_data_t;
+    import mux_demux_connection::slave_to_master_data_t;
 
     input logic clk;
     input logic rst_n;
     input logic [QTY_OF_DEVICES-1:0] granted_master;
-    cross_bar_if.master master_0_if, master_1_if, master_2_if, master_3_if;
-    cross_bar_if.slave slave_0_if;
+    input master_to_slave_data_t master_0_to_slave, master_1_to_slave, master_2_to_slave, master_3_to_slave; //masters -> slave: req, addr, cmd, wdata 
+    output slave_to_master_data_t slave_to_master;  //slave -> master's demux: ack, resp, rdata
+    cross_bar_if.slave slave_if;
     output logic session_is_finished;
 
-    //slave if mux. master if demux
+    //slave if mux
     always_comb
     begin
         if(|granted_master)
@@ -29,34 +65,34 @@ module slave_response_parser #(
             unique case(1'b1)
                 granted_master[0]:
                 begin
-                    slave_if._req   =  master_0_if._req;
-                    slave_if._addr  =  master_0_if._addr;
-                    slave_if._cmd   =  master_0_if._cmd;
-                    slave_if._wdata =  master_0_if._wdata;
+                    slave_if._req   =  master_0_to_slave.req;
+                    slave_if._addr  =  master_0_to_slave.addr;
+                    slave_if._cmd   =  master_0_to_slave.cmd;
+                    slave_if._wdata =  master_0_to_slave.wdata;
                 end
 
                 granted_master[1]:
                 begin
-                    slave_if._req   =  master_1_if._req;
-                    slave_if._addr  =  master_1_if._addr;
-                    slave_if._cmd   =  master_1_if._cmd;
-                    slave_if._wdata =  master_1_if._wdata;    
+                    slave_if._req   =  master_1_to_slave.req;
+                    slave_if._addr  =  master_1_to_slave.addr;
+                    slave_if._cmd   =  master_1_to_slave.cmd;
+                    slave_if._wdata =  master_1_to_slave.wdata;    
                 end
 
                 granted_master[2]:
                 begin
-                    slave_if._req   =  master_2_if._req;
-                    slave_if._addr  =  master_2_if._addr;
-                    slave_if._cmd   =  master_2_if._cmd;
-                    slave_if._wdata =  master_2_if._wdata;    
+                    slave_if._req   =  master_2_to_slave.req;
+                    slave_if._addr  =  master_2_to_slave.addr;
+                    slave_if._cmd   =  master_2_to_slave.cmd;
+                    slave_if._wdata =  master_2_to_slave.wdata;    
                 end
 
                 granted_master[3]:
                 begin
-                    slave_if._req   =  master_3_if._req;
-                    slave_if._addr  =  master_3_if._addr;
-                    slave_if._cmd   =  master_3_if._cmd;
-                    slave_if._wdata =  master_3_if._wdata;    
+                    slave_if._req   =  master_3_to_slave.req;
+                    slave_if._addr  =  master_3_to_slave.addr;
+                    slave_if._cmd   =  master_3_to_slave.cmd;
+                    slave_if._wdata =  master_3_to_slave.wdata;    
                 end
             endcase                       
         end
@@ -132,6 +168,6 @@ module slave_response_parser #(
 `endif
 
 //**************************************************************
-endmodule
+endmodule: slave_mux
 
 `endif
