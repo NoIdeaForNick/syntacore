@@ -196,6 +196,15 @@ module top(
     logic [DATA_WIDTH-1:0]  slave_2_rdata;
     logic [DATA_WIDTH-1:0]  slave_3_rdata;
 
+    logic   master_0_resp;
+    logic   master_1_resp;
+    logic   master_2_resp;
+    logic   master_3_resp;
+    logic   slave_0_resp;
+    logic   slave_1_resp;
+    logic   slave_2_resp;
+    logic   slave_3_resp;
+
 
     cross_bar_wrapper cross_bar_wrapper_inst(.*);
 

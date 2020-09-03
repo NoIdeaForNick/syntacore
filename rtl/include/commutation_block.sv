@@ -26,22 +26,15 @@ endpackage
 module commutation_block #(   
     parameter QTY_OF_DEVICES = 4
 )(  
-    clk,
-    rst_n,
-    granted_matrix,
-    master_0_if, master_1_if, master_2_if, master_3_if,
-    slave_0_if, slave_1_if, slave_2_if, slave_3_if,
-    session_is_finished
+    input logic                         clk,
+    input logic                         rst_n,
+    input logic [QTY_OF_DEVICES-1:0]    granted_matrix [QTY_OF_DEVICES],
+    cross_bar_if.master master_0_if, master_1_if, master_2_if, master_3_if,
+    cross_bar_if.slave slave_0_if, slave_1_if, slave_2_if, slave_3_if,
+    output logic                        session_is_finished [QTY_OF_DEVICES]
 );
     import mux_connection::master_to_slave_data_t;
     import mux_connection::slave_to_master_data_t;
-
-    input logic                         clk;
-    input logic                         rst_n;
-    input logic [QTY_OF_DEVICES-1:0]    granted_matrix [QTY_OF_DEVICES];
-    cross_bar_if.master master_0_if, master_1_if, master_2_if, master_3_if;
-    cross_bar_if.slave slave_0_if, slave_1_if, slave_2_if, slave_3_if;
-    output logic                        session_is_finished [QTY_OF_DEVICES];
 
     master_to_slave_data_t master_0_to_slaves, master_1_to_slaves, master_2_to_slaves, master_3_to_slaves;
     slave_to_master_data_t slave_0_to_masters, slave_1_to_masters, slave_2_to_masters, slave_3_to_masters; 
@@ -164,18 +157,13 @@ endmodule: commutation_block
 module master_mux #(   
     parameter QTY_OF_DEVICES = 4
 )(  
-    granted_master,
-    master_if,
-    master_to_slaves,
-    slave_0_to_master, slave_1_to_master, slave_2_to_master, slave_3_to_master
+    input logic [QTY_OF_DEVICES-1:0] granted_master,
+    cross_bar_if.master master_if,
+    output master_to_slave_data_t master_to_slaves,
+    input slave_to_master_data_t slave_0_to_master, slave_1_to_master, slave_2_to_master, slave_3_to_master
 );
     import mux_connection::master_to_slave_data_t;
     import mux_connection::slave_to_master_data_t;
-
-    input logic [QTY_OF_DEVICES-1:0] granted_master;
-    cross_bar_if.master master_if;
-    output master_to_slave_data_t master_to_slaves;
-    input slave_to_master_data_t slave_0_to_master, slave_1_to_master, slave_2_to_master, slave_3_to_master;
 
     assign  master_to_slaves.req = master_if._req,
             master_to_slaves.addr = master_if._addr,
@@ -230,24 +218,16 @@ endmodule: master_mux
 module slave_mux #(   
     parameter QTY_OF_DEVICES = 4
 )(  
-    clk,
-    rst_n,
-    granted_master,
-    master_0_to_slave, master_1_to_slave, master_2_to_slave, master_3_to_slave,
-    slave_to_masters,
-    slave_if,
-    session_is_finished
+    input logic clk,
+    input logic rst_n,
+    input logic [QTY_OF_DEVICES-1:0] granted_master,
+    input master_to_slave_data_t master_0_to_slave, master_1_to_slave, master_2_to_slave, master_3_to_slave, //masters -> slave: req, addr, cmd, wdata 
+    output slave_to_master_data_t slave_to_masters,  //slave -> master's demux: ack, resp, rdata
+    cross_bar_if.slave slave_if,
+    output logic session_is_finished
 );
     import mux_connection::master_to_slave_data_t;
     import mux_connection::slave_to_master_data_t;
-
-    input logic clk;
-    input logic rst_n;
-    input logic [QTY_OF_DEVICES-1:0] granted_master;
-    input master_to_slave_data_t master_0_to_slave, master_1_to_slave, master_2_to_slave, master_3_to_slave; //masters -> slave: req, addr, cmd, wdata 
-    output slave_to_master_data_t slave_to_masters;  //slave -> master's demux: ack, resp, rdata
-    cross_bar_if.slave slave_if;
-    output logic session_is_finished;
 
     assign  slave_to_masters.ack = slave_if._ack,
             slave_to_masters.resp = slave_if._resp,
@@ -323,7 +303,13 @@ module slave_mux #(
 
             enWAITING_FOR_ACK:
             begin
-                if(slave_if._ack) fsm_state <= enREADING_DATA_FROM_SLAVE;                   
+                if(slave_if._ack) 
+                    if(slave_if._cmd) // 1-write, 0-read
+                    begin
+                        session_is_finished <= 1;
+                        fsm_state <= enWAITING_FOR_REQUEST; 
+                    end
+                    else fsm_state <= enREADING_DATA_FROM_SLAVE;                   
             end
 
             enREADING_DATA_FROM_SLAVE:

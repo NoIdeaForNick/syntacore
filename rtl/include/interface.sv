@@ -1,5 +1,5 @@
-`ifndef _INTERFACE
-`define _INTERFACE
+`ifndef INTERFACE
+`define INTERFACE
 
 package interface_connection; 
     localparam ADDR_WIDTH = 32;

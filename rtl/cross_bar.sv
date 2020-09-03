@@ -58,9 +58,9 @@ module cross_bar(
         [M3, M2, M1, M0] <- Slave 2 grant
         [M3, M2, M1, M0] <- Slave 3 grant
         
-        for instance, grant_from_arbiter_to_slave[1] = 4'b0001 ----> means that slave 1 (addr = x01) grants access from master 0
+        for instance, grant_from_arbiter_to_commutation_block[1] = 4'b0001 ----> means that slave 1 (addr = x01) grants access from master 0
     */
-    wire [QTY_OF_DEVICES-1:0] grant_from_arbiter_to_slave [QTY_OF_DEVICES]; //4 signals grant (from each master) to single slave x 4 slaves
+    wire [QTY_OF_DEVICES-1:0] grant_from_arbiter_to_commutation_block [QTY_OF_DEVICES]; //4 signals grant (from each master) to single slave x 4 slaves
     
     wire session_with_slave_finished [QTY_OF_DEVICES];
 
@@ -93,22 +93,38 @@ module cross_bar(
                     requests_to_all_arbiters_from_all_masters[QTY_OF_DEVICES-3][i],
                     requests_to_all_arbiters_from_all_masters[QTY_OF_DEVICES-4][i]
                 }),
-                .grant(grant_from_arbiter_to_slave[i]),
+                .grant(grant_from_arbiter_to_commutation_block[i]),
                 .session_is_finished(session_with_slave_finished[i])
             );
         end
 
-        //grant signal parsers
+        //commutation muxes
+        commutation_block #(
+            .QTY_OF_DEVICES(QTY_OF_DEVICES)
+        ) commutation_block_inst (
+            .clk(clk),
+            .rst_n(rst_n),
+            .granted_matrix(grant_from_arbiter_to_commutation_block),
+            .master_0_if(master_0_if), 
+            .master_1_if(master_1_if), 
+            .master_2_if(master_2_if), 
+            .master_3_if(master_3_if),
+            .slave_0_if(slave_0_if), 
+            .slave_1_if(slave_1_if), 
+            .slave_2_if(slave_2_if), 
+            .slave_3_if(slave_3_if),
+            .session_is_finished(session_with_slave_finished)
+        );
     endgenerate   
 
 
     logic [3:0] slave0, slave1, slave2, slave3;
     always @(posedge clk)
     begin
-        slave0 <= grant_from_arbiter_to_slave[0];
-        slave1 <= grant_from_arbiter_to_slave[1];
-        slave2 <= grant_from_arbiter_to_slave[2];
-        slave3 <= grant_from_arbiter_to_slave[3];
+        slave0 <= grant_from_arbiter_to_commutation_block[0];
+        slave1 <= grant_from_arbiter_to_commutation_block[1];
+        slave2 <= grant_from_arbiter_to_commutation_block[2];
+        slave3 <= grant_from_arbiter_to_commutation_block[3];
     end
 
 
