@@ -10,11 +10,12 @@ class sequencer;
     static shortint unsigned delay_between_iterations = 0;
     event finished;
 
-    function new(mailbox master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv);
+    function new(mailbox master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv, string transaction_type);
         this.master_0_seq2driv = master_0_seq2driv;
         this.master_1_seq2driv = master_1_seq2driv;
         this.master_2_seq2driv = master_2_seq2driv;
         this.master_3_seq2driv = master_3_seq2driv;
+        this.transaction_type = transaction_type;
     endfunction
 
     static function void SetNumberOfIterations(int unsigned iterations);
@@ -121,6 +122,5 @@ class sequencer;
         end
         -> finished;
     endtask
-
 endclass
 `endif
