@@ -39,11 +39,13 @@ class environment;
     endfunction
 
     task PreTest();        
-        driv.Reset();
+        master_driv.Reset();
+        slave_driv.Reset();
     endtask
 
     task Test();
-        disable driv.main;
+        disable master_driv.main;
+        disable slave_driv.main;
         fork
             seq.main();
             master_driv.main();

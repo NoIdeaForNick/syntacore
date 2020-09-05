@@ -26,8 +26,8 @@ class sequencer;
         delay_between_iterations = delay;
     endfunction
 
-    static function void SetIterationsType(string transaction_type);
-        this.transaction_type = transaction_type;
+    static function void SetIterationsType(string trans_type);
+        transaction_type = trans_type;
     endfunction
 
     virtual function transaction GetItem();
@@ -42,14 +42,14 @@ class sequencer;
                 assert(base_trans.randomize()) else ErrorHandler(transaction_type);
             end
 
-            "single slave"
+            "single slave":
             begin
                 single_slave_trans = new();
                 assert(single_slave_trans.randomize()) else ErrorHandler(transaction_type);
                 base_trans = single_slave_trans;
             end
 
-            "fixed delay"
+            "fixed delay":
             begin
                 fixed_delay_trans = new();
                 assert(fixed_delay_trans.randomize()) else ErrorHandler(transaction_type);
@@ -66,7 +66,7 @@ class sequencer;
     endfunction
 
     function void ErrorHandler(string object_failed);
-        $error("%m %t %s %s randomization failed!", $time, object_failed);
+        $error("%m %t %s randomization failed!", $time, object_failed);
         $stop;
     endfunction
 
@@ -93,8 +93,8 @@ class sequencer;
             //setting request delays
             master_0_req_delay = master_0_trans.request_delay;
             master_1_req_delay = master_1_trans.request_delay;
-            master_2_req_delay = master_2_trans.request_delay
-            master_3_req_delay = master_3_trans.request_delay
+            master_2_req_delay = master_2_trans.request_delay;
+            master_3_req_delay = master_3_trans.request_delay;
 
             //sending created objects
             fork

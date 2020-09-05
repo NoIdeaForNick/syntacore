@@ -9,7 +9,7 @@ class transaction;
 
     rand shortint unsigned request_delay;
 
-    constraint c_request_delay {request_delay inside [0:1000];}
+    constraint c_request_delay {request_delay inside {[0:1000]};}
 endclass
 
 

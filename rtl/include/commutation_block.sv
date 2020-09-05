@@ -22,6 +22,11 @@ package mux_connection;
     } slave_to_master_data_t;
 endpackage
 
+
+import mux_connection::master_to_slave_data_t;
+import mux_connection::slave_to_master_data_t;
+
+
 //all cross bar commutation is here
 module commutation_block #(   
     parameter QTY_OF_DEVICES = 4
@@ -33,8 +38,6 @@ module commutation_block #(
     cross_bar_if.slave slave_0_if, slave_1_if, slave_2_if, slave_3_if,
     output logic                        session_is_finished [QTY_OF_DEVICES]
 );
-    import mux_connection::master_to_slave_data_t;
-    import mux_connection::slave_to_master_data_t;
 
     master_to_slave_data_t master_0_to_slaves, master_1_to_slaves, master_2_to_slaves, master_3_to_slaves;
     slave_to_master_data_t slave_0_to_masters, slave_1_to_masters, slave_2_to_masters, slave_3_to_masters; 
@@ -162,8 +165,6 @@ module master_mux #(
     output master_to_slave_data_t master_to_slaves,
     input slave_to_master_data_t slave_0_to_master, slave_1_to_master, slave_2_to_master, slave_3_to_master
 );
-    import mux_connection::master_to_slave_data_t;
-    import mux_connection::slave_to_master_data_t;
 
     assign  master_to_slaves.req = master_if._req,
             master_to_slaves.addr = master_if._addr,
@@ -226,8 +227,6 @@ module slave_mux #(
     cross_bar_if.slave slave_if,
     output logic session_is_finished
 );
-    import mux_connection::master_to_slave_data_t;
-    import mux_connection::slave_to_master_data_t;
 
     assign  slave_to_masters.ack = slave_if._ack,
             slave_to_masters.resp = slave_if._resp,

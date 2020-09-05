@@ -1,7 +1,7 @@
 timeunit 1ns;
 timeprecision 1ns;
 
-`include "../../rt/include/interface.sv"
+`include "../../rtl/include/interface.sv"
 
 module tb_top;
     bit clk, rst_n;
@@ -28,5 +28,7 @@ module tb_top;
         slave_0_if, slave_1_if, slave_2_if, slave_3_if
     );
 
+    logic [3:0] grant_from_arbiter_to_commutation_block [4];
+    assign grant_from_arbiter_to_commutation_block = DUT.grant_from_arbiter_to_commutation_block;
 
 endmodule

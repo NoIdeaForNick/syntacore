@@ -71,7 +71,7 @@ class master_driver;
         _if._req <= trans.req;
         _if._addr <= trans.addr;
         _if._cmd <= trans.cmd;
-        _if.wdata <= trans.wdata;
+        _if._wdata <= trans.wdata;
         if(trans.req) 
         begin
             @(posedge _if._ack);
@@ -79,7 +79,7 @@ class master_driver;
             _if._req <= 0;
             _if._addr <= 0;
             _if._cmd <= 0;
-            _if.wdata <= 0;
+            _if._wdata <= 0;
             if(!trans.cmd) //0 -> read request
             begin
                 @(posedge _if._resp);
@@ -141,10 +141,10 @@ class slave_driver;
     endtask
 
     task WaitingForReqAndReply(virtual cross_bar_if _if);
-        byte unsigned resp_delay_cycles = $urandom(0,10); 
+        byte unsigned resp_delay_cycles = $urandom_range(0,10); 
         bit is_it_read_cmd;
         @(posedge _if._req);
-        if(!_if.cmd) is_it_read_cmd = 1;
+        if(!_if._cmd) is_it_read_cmd = 1;
         @(posedge clk);
         _if._ack <= 1;
         @(posedge clk);
