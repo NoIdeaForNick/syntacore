@@ -30,5 +30,7 @@ module tb_top;
 
     logic [3:0] grant_from_arbiter_to_commutation_block [4];
     assign grant_from_arbiter_to_commutation_block = DUT.grant_from_arbiter_to_commutation_block;
+    logic session_with_slave_finished [4];
+    assign session_with_slave_finished = DUT.session_with_slave_finished;
 
 endmodule

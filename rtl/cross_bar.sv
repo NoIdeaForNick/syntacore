@@ -73,8 +73,6 @@ module cross_bar(
             master_request_listener  #(
                 .QTY_OF_DEVICES(QTY_OF_DEVICES)
             ) master_request_listener_inst (
-                .clk(clk),
-                .rst_n(rst_n),
                 .address(master_chooses_slave[i]), 
                 .request_from_master(master_request[i]), 
                 .request_to_arbiters(requests_to_all_arbiters_from_all_masters[i])

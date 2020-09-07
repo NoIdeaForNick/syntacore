@@ -46,8 +46,7 @@ program cross_bar_crv_test(
     task StartTestingThroughAllObjects();
         foreach(objects_for_testing[i])
         begin
-            env = new(   clk, 
-                            master_0_if, master_1_if, master_2_if, master_3_if, 
+            env = new(      master_0_if, master_1_if, master_2_if, master_3_if, 
                             slave_0_if, slave_1_if, slave_2_if, slave_3_if,  
                             objects_for_testing[i], 1);                
             env.Run(); 

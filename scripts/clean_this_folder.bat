@@ -1,0 +1,1 @@
+tclsh clean.tcl

@@ -33,7 +33,11 @@ module commutation_block #(
 )(  
     input logic                         clk,
     input logic                         rst_n,
-    input logic [QTY_OF_DEVICES-1:0]    granted_matrix [QTY_OF_DEVICES],
+    input logic [QTY_OF_DEVICES-1:0]    granted_matrix [QTY_OF_DEVICES], // [M3 M2 M1 M0] <- S0
+                                                                         // [M3 M2 M1 M0] <- S1
+                                                                         // [M3 M2 M1 M0] <- S2
+                                                                         // [M3 M2 M1 M0] <- S3
+    
     cross_bar_if.master master_0_if, master_1_if, master_2_if, master_3_if,
     cross_bar_if.slave slave_0_if, slave_1_if, slave_2_if, slave_3_if,
     output logic                        session_is_finished [QTY_OF_DEVICES]
@@ -42,12 +46,17 @@ module commutation_block #(
     master_to_slave_data_t master_0_to_slaves, master_1_to_slaves, master_2_to_slaves, master_3_to_slaves;
     slave_to_master_data_t slave_0_to_masters, slave_1_to_masters, slave_2_to_masters, slave_3_to_masters; 
 
+    wire [QTY_OF_DEVICES-1:0] master_0_chose_slave = {granted_matrix[3][0], granted_matrix[2][0], granted_matrix[1][0], granted_matrix[0][0]};
+    wire [QTY_OF_DEVICES-1:0] master_1_chose_slave = {granted_matrix[3][1], granted_matrix[2][1], granted_matrix[1][1], granted_matrix[0][1]};
+    wire [QTY_OF_DEVICES-1:0] master_2_chose_slave = {granted_matrix[3][2], granted_matrix[2][2], granted_matrix[1][2], granted_matrix[0][2]};
+    wire [QTY_OF_DEVICES-1:0] master_3_chose_slave = {granted_matrix[3][3], granted_matrix[2][3], granted_matrix[1][3], granted_matrix[0][3]};
+
     //no generate cause avoiding array of interfaces declared as ports
     //master 0
     master_mux #(
         .QTY_OF_DEVICES(QTY_OF_DEVICES)
     ) master_0_mux_inst (
-        .granted_master(granted_matrix[0]),
+        .chosen_slave(master_0_chose_slave),
         .master_if(master_0_if),
         .master_to_slaves(master_0_to_slaves),
         .slave_0_to_master(slave_0_to_masters),
@@ -59,7 +68,7 @@ module commutation_block #(
     master_mux #(
         .QTY_OF_DEVICES(QTY_OF_DEVICES)
     ) master_1_mux_inst (
-        .granted_master(granted_matrix[1]),
+        .chosen_slave(master_1_chose_slave),
         .master_if(master_1_if),
         .master_to_slaves(master_1_to_slaves),
         .slave_0_to_master(slave_0_to_masters),
@@ -71,7 +80,7 @@ module commutation_block #(
     master_mux #(
         .QTY_OF_DEVICES(QTY_OF_DEVICES)
     ) master_2_mux_inst (
-        .granted_master(granted_matrix[2]),
+        .chosen_slave(master_2_chose_slave),
         .master_if(master_2_if),
         .master_to_slaves(master_2_to_slaves),
         .slave_0_to_master(slave_0_to_masters),
@@ -83,7 +92,7 @@ module commutation_block #(
     master_mux #(
         .QTY_OF_DEVICES(QTY_OF_DEVICES)
     ) master_3_mux_inst (
-        .granted_master(granted_matrix[3]),
+        .chosen_slave(master_3_chose_slave),
         .master_if(master_3_if),
         .master_to_slaves(master_3_to_slaves),
         .slave_0_to_master(slave_0_to_masters),
@@ -160,7 +169,7 @@ endmodule: commutation_block
 module master_mux #(   
     parameter QTY_OF_DEVICES = 4
 )(  
-    input logic [QTY_OF_DEVICES-1:0] granted_master,
+    input logic [QTY_OF_DEVICES-1:0] chosen_slave,
     cross_bar_if.master master_if,
     output master_to_slave_data_t master_to_slaves,
     input slave_to_master_data_t slave_0_to_master, slave_1_to_master, slave_2_to_master, slave_3_to_master
@@ -174,31 +183,31 @@ module master_mux #(
     //master mux
     always_comb
     begin
-        if(|granted_master)
+        if(|chosen_slave)
         begin
             unique case(1'b1)
-                granted_master[0]:
+                chosen_slave[0]:
                 begin
-                   master_if._ack  = slave_0_to_master.ack;
-                   master_if._resp  = slave_0_to_master.resp;
-                   master_if._rdata  = slave_0_to_master.rdata;
+                    master_if._ack  = slave_0_to_master.ack;
+                    master_if._resp  = slave_0_to_master.resp;
+                    master_if._rdata  = slave_0_to_master.rdata;
                 end
 
-                granted_master[1]:
+                chosen_slave[1]:
                 begin
                     master_if._ack  = slave_1_to_master.ack;
                     master_if._resp  = slave_1_to_master.resp;
                     master_if._rdata  = slave_1_to_master.rdata;
                 end
 
-                granted_master[2]:
+                chosen_slave[2]:
                 begin
                     master_if._ack  = slave_2_to_master.ack;
                     master_if._resp  = slave_2_to_master.resp;
                     master_if._rdata  = slave_2_to_master.rdata;
                 end
 
-                granted_master[3]:
+                chosen_slave[3]:
                 begin
                     master_if._ack  = slave_3_to_master.ack;
                     master_if._resp  = slave_3_to_master.resp;

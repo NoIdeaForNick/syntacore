@@ -6,8 +6,7 @@ class master_driver;
     mailbox master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv;
     virtual cross_bar_if master_0_if, master_1_if, master_2_if, master_3_if;
 
-    function new(   input bit clk,
-                    virtual cross_bar_if master_0_if, master_1_if, master_2_if, master_3_if, 
+    function new(   virtual cross_bar_if master_0_if, master_1_if, master_2_if, master_3_if, 
                     mailbox master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv);
         this.master_0_if = master_0_if;
         this.master_1_if = master_1_if;
@@ -93,7 +92,7 @@ endclass
 class slave_driver;
     virtual cross_bar_if slave_0_if, slave_1_if, slave_2_if, slave_3_if;
 
-    function new(input bit clk, virtual cross_bar_if slave_0_if, slave_1_if, slave_2_if, slave_3_if);
+    function new(virtual cross_bar_if slave_0_if, slave_1_if, slave_2_if, slave_3_if);
         this.slave_0_if = slave_0_if;
         this.slave_1_if = slave_1_if;
         this.slave_2_if = slave_2_if;
@@ -136,7 +135,7 @@ class slave_driver;
                 begin
                     WaitingForReqAndReply(slave_3_if);    
                 end
-            join
+            join_any
         end
     endtask
 
@@ -153,8 +152,10 @@ class slave_driver;
         begin
             repeat(resp_delay_cycles) @(posedge clk);
             _if._resp <= 1;
+            _if._rdata <= $urandom(0);
             @(posedge clk);
             _if._resp <= 0;
+            _if._rdata <= 0;
         end    
     endtask
 endclass

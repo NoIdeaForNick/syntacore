@@ -12,8 +12,7 @@ class environment;
     string transaction_type;
     bit is_transcripts_on;
 
-    function new(   input bit clk, 
-                    virtual cross_bar_if master_0_if, master_1_if, master_2_if, master_3_if,
+    function new(   virtual cross_bar_if master_0_if, master_1_if, master_2_if, master_3_if,
                     virtual cross_bar_if slave_0_if, slave_1_if, slave_2_if, slave_3_if,
                     string transaction_type = "full random", bit is_transcripts_on = 1);            
         this.master_0_if = master_0_if;
@@ -34,8 +33,8 @@ class environment;
         master_2_seq2driv = new();
         master_3_seq2driv = new();
         seq = new(master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv, transaction_type);
-        master_driv = new(clk, master_0_if, master_1_if, master_2_if, master_3_if, master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv);
-        slave_driv = new(clk, master_0_if, master_1_if, master_2_if, master_3_if);
+        master_driv = new(master_0_if, master_1_if, master_2_if, master_3_if, master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv);
+        slave_driv = new(slave_0_if, slave_1_if, slave_2_if, slave_3_if);
     endfunction
 
     task PreTest();        
