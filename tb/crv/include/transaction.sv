@@ -33,4 +33,10 @@ class fixed_request_delay_transaction extends transaction;
     constraint c_request_delay {request_delay == 10;}
 endclass
 
+
+class reply;
+    int unsigned rdata;
+    bit session_complete;
+endclass
+
 `endif

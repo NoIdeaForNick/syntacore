@@ -43,21 +43,10 @@ class master_driver;
     task main;
         forever begin
             fork
-                begin
-                    SetNewTransDataAndWaitForAck(master_0_seq2driv, master_0_if);
-                end
-                
-                begin
-                    SetNewTransDataAndWaitForAck(master_1_seq2driv, master_1_if);
-                end
-
-                begin
-                    SetNewTransDataAndWaitForAck(master_2_seq2driv, master_2_if);
-                end
-
-                begin
-                    SetNewTransDataAndWaitForAck(master_3_seq2driv, master_3_if);
-                end
+                SetNewTransDataAndWaitForAck(master_0_seq2driv, master_0_if);
+                SetNewTransDataAndWaitForAck(master_1_seq2driv, master_1_if);
+                SetNewTransDataAndWaitForAck(master_2_seq2driv, master_2_if);
+                SetNewTransDataAndWaitForAck(master_3_seq2driv, master_3_if);
             join 
             ++number_of_transaction;
         end
@@ -120,21 +109,10 @@ class slave_driver;
     task main;
         forever begin
             fork
-                begin
-                    WaitingForReqAndReply(slave_0_if);
-                end
-
-                begin
-                    WaitingForReqAndReply(slave_1_if);
-                end
-
-                begin
-                    WaitingForReqAndReply(slave_2_if);  
-                end
-
-                begin
-                    WaitingForReqAndReply(slave_3_if);    
-                end
+                WaitingForReqAndReply(slave_0_if);
+                WaitingForReqAndReply(slave_1_if);
+                WaitingForReqAndReply(slave_2_if);  
+                WaitingForReqAndReply(slave_3_if);    
             join_any
         end
     endtask
