@@ -107,34 +107,35 @@ class slave_driver;
     endtask
 
     task main;
-        forever begin
-            fork
-                WaitingForReqAndReply(slave_0_if);
-                WaitingForReqAndReply(slave_1_if);
-                WaitingForReqAndReply(slave_2_if);  
-                WaitingForReqAndReply(slave_3_if);    
-            join_any
-        end
+        fork
+            WaitingForReqAndReply(slave_0_if);
+            WaitingForReqAndReply(slave_1_if);
+            WaitingForReqAndReply(slave_2_if);  
+            WaitingForReqAndReply(slave_3_if);    
+        join
     endtask
 
     task WaitingForReqAndReply(virtual cross_bar_if _if);
-        byte unsigned resp_delay_cycles = $urandom_range(0,10); 
-        bit is_it_read_cmd;
-        @(posedge _if._req);
-        if(!_if._cmd) is_it_read_cmd = 1;
-        @(posedge clk);
-        _if._ack <= 1;
-        @(posedge clk);
-        _if._ack <= 0;
-        if(is_it_read_cmd)
+        forever
         begin
-            repeat(resp_delay_cycles) @(posedge clk);
-            _if._resp <= 1;
-            _if._rdata <= $urandom(0);
+            byte unsigned resp_delay_cycles = $urandom_range(0,10); 
+            bit is_it_read_cmd;
+            @(posedge _if._req);
+            if(!_if._cmd) is_it_read_cmd = 1;
             @(posedge clk);
-            _if._resp <= 0;
-            _if._rdata <= 0;
-        end    
+            _if._ack <= 1;
+            @(posedge clk);
+            _if._ack <= 0;
+            if(is_it_read_cmd)
+            begin
+                repeat(resp_delay_cycles) @(posedge clk);
+                _if._resp <= 1;
+                _if._rdata <= $urandom(0);
+                @(posedge clk);
+                _if._resp <= 0;
+                _if._rdata <= 0;
+            end
+        end        
     endtask
 endclass
 

@@ -31,28 +31,36 @@ module tb_top;
         slave_3_if._rdata <= 4;
 
         repeat(10) @(posedge clk);
+        master_0_if._req <= 1;
+        master_0_if._addr <= {2'b11, 30'd1};
+        master_0_if._cmd <= 1;
+        master_0_if._wdata <= 50;
+        
         master_2_if._req <= 1;
-        master_2_if._addr <= {2'b11, 30'b0};
+        master_2_if._addr <= {2'b11, 30'd2};
         master_2_if._cmd <= 0;
         master_2_if._wdata <= 5;
+
+
+
+        repeat(5) @(posedge clk);
+        slave_3_if._ack <= 1;
+        master_0_if._req <= 0;
+        @(posedge clk);
+        slave_3_if._ack <= 0;
+
 
         repeat(5) @(posedge clk);
         slave_3_if._ack <= 1;
         @(posedge clk);
         slave_3_if._ack <= 0;
-
-        master_0_if._req <= 1;
-        master_0_if._addr <= {2'b11, 30'b0};
-        master_0_if._cmd <= 1;
-        master_0_if._wdata <= 50;
-
-        repeat(5) @(posedge clk);
         slave_3_if._resp <= 1;
         slave_3_if._rdata <= 10;
         @(posedge clk);
         slave_3_if._resp <= 0;
-        slave_3_if._rdata <= 10;
 
+        #100;
+        $stop;
     end
 
 

@@ -7,6 +7,8 @@ class transaction;
     rand int unsigned wdata;
     rand bit cmd;
 
+    bit [1:0] appointed_slave;
+
     rand shortint unsigned request_delay;
 
     constraint c_request_delay {request_delay inside {[0:1000]};}
@@ -37,6 +39,7 @@ endclass
 class reply;
     int unsigned rdata;
     bit session_complete;
+    bit [1:0] appointed_master;
 endclass
 
 `endif

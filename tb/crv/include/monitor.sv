@@ -68,7 +68,7 @@ class monitor;
                 RequestIfListener(slave_3_if, slave_3_mon2scb, slave_3_trans);
 
                 //send secondly
- /*               ReplyIfListener(master_0_if, master_0_mon2scb, master_0_resp);
+                ReplyIfListener(master_0_if, master_0_mon2scb, master_0_resp);
                 ReplyIfListener(master_1_if, master_1_mon2scb, master_1_resp);
                 ReplyIfListener(master_2_if, master_2_mon2scb, master_2_resp);
                 ReplyIfListener(master_3_if, master_3_mon2scb, master_3_resp);
@@ -76,7 +76,7 @@ class monitor;
                 ReplyIfListener(slave_0_if, slave_0_mon2scb, slave_0_resp);
                 ReplyIfListener(slave_1_if, slave_1_mon2scb, slave_1_resp);
                 ReplyIfListener(slave_2_if, slave_2_mon2scb, slave_2_resp);
-                ReplyIfListener(slave_3_if, slave_3_mon2scb, slave_3_resp); */
+                ReplyIfListener(slave_3_if, slave_3_mon2scb, slave_3_resp);  
             join
     endtask
 
@@ -87,6 +87,8 @@ class monitor;
             trans.addr = _if._addr;
             trans.wdata = _if._wdata;
             trans.cmd = _if._cmd;
+            trans.appointed_slave = _if._addr[31:30];
+            $display("%t sending request", $time);
             mail.put(trans);            
         end    
     endtask
@@ -96,11 +98,13 @@ class monitor;
         begin
             @(posedge _if._ack);
             rep.session_complete = 1;
+            rep.appointed_master = _if._addr[31:30];
             if(_if._cmd) mail.put(rep);
             else
             begin
                 @(posedge _if._resp);
                 rep.rdata = _if._rdata;
+                $display("%t sending reply", $time);
                 mail.put(rep);
             end
         end

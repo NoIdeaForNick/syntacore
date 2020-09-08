@@ -20,30 +20,21 @@ module round_robin_arbiter (
     logic	[1:0]	rotate_ptr;
     logic	[3:0]	shift_req;
     logic	[3:0]	shift_grant;
-    logic   [3:0]   req_buf;
 
     initial 
     begin
         rotate_ptr = 0;
         grant = 0;
-        req_buf = 0;
     end        
-        
-    always @(posedge clk, negedge rst_an)
-        if(~rst_an) req_buf <= 0;
-        else
-            if(session_is_finished) req_buf <= 0;
-            else
-                if(!grant)  req_buf <= req; //sampling when no active grants OR last grant session is finished so get new one
 
-    // shift req_buf to round robin the current priority
+    // shift req to round robin the current priority
     always_comb
     begin
         unique case (rotate_ptr[1:0])
-            2'b00: shift_req[3:0] = req_buf[3:0];
-            2'b01: shift_req[3:0] = {req_buf[0],req_buf[3:1]};
-            2'b10: shift_req[3:0] = {req_buf[1:0],req_buf[3:2]};
-            2'b11: shift_req[3:0] = {req_buf[2:0],req_buf[3]};
+            2'b00: shift_req[3:0] = req[3:0];
+            2'b01: shift_req[3:0] = {req[0],req[3:1]};
+            2'b10: shift_req[3:0] = {req[1:0],req[3:2]};
+            2'b11: shift_req[3:0] = {req[2:0],req[3]};
         endcase
     end
 
@@ -67,12 +58,13 @@ module round_robin_arbiter (
     always @(posedge clk, negedge rst_an)
         if(~rst_an) grant <= 0;
         else
-            unique case (rotate_ptr[1:0])
-                2'b00: grant[3:0] <= shift_grant[3:0];
-                2'b01: grant[3:0] <= {shift_grant[2:0],shift_grant[3]};
-                2'b10: grant[3:0] <= {shift_grant[1:0],shift_grant[3:2]};
-                2'b11: grant[3:0] <= {shift_grant[0],shift_grant[3:1]};
-            endcase
+            if(session_is_finished || !grant) //update grant when prev session is finished or no one granted at atll
+                unique case (rotate_ptr[1:0])
+                    2'b00: grant[3:0] <= shift_grant[3:0];
+                    2'b01: grant[3:0] <= {shift_grant[2:0],shift_grant[3]};
+                    2'b10: grant[3:0] <= {shift_grant[1:0],shift_grant[3:2]};
+                    2'b11: grant[3:0] <= {shift_grant[0],shift_grant[3:1]};
+                endcase
 
     // update the rotate pointer
     // rotate pointer will set to the one after the current granted

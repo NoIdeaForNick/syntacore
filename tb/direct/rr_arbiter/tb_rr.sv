@@ -28,15 +28,15 @@ initial begin
     rst_an = 0;
     #10;
     rst_an = 1;
-    @(posedge clk);
-    req2 <= 1;
-    @(posedge clk);
-    req2<= 0;
 
 
     @(posedge clk);
+    req0 <= 1;
     req1 <= 1;
+    req2 <= 1;
+    session_is_finished <= 1;
     repeat(5) @(posedge clk);
+    session_is_finished <= 1;
     req0 <= 1;
     req1 <= 0;
     repeat(5) @(posedge clk);
@@ -57,18 +57,7 @@ initial begin
     session_is_finished <= 1;
     repeat(5) @(posedge clk);
     session_is_finished <= 0;
-    repeat(5) @(posedge clk);
-    session_is_finished <= 1;
-    repeat(5) @(posedge clk);
-    session_is_finished <= 0;
-    repeat(5) @(posedge clk);
-    session_is_finished <= 1;
-    repeat(5) @(posedge clk);
-    session_is_finished <= 0;
-    repeat(5) @(posedge clk);
-    session_is_finished <= 1;
-    repeat(5) @(posedge clk);
-    session_is_finished <= 0;
+
     
 
 end
