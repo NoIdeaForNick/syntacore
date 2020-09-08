@@ -6,8 +6,8 @@ package objects;
     `include "include/transaction.sv"
     `include "include/sequencer.sv"
     `include "include/driver.sv"
-//    `include "include/monitor.sv"
-//    `include "include/scoreboard.sv"
+    `include "include/monitor.sv"
+    `include "include/scoreboard.sv"
     `include "include/environment.sv"
 endpackage
 
@@ -23,7 +23,7 @@ program cross_bar_crv_test(
     
     semaphore reset_sem;
 
-    string objects_for_testing[] = {"full random", "single slave", "fixed delay"};
+    string objects_for_testing[] = {"full random", "fixed delay", "single slave"};
 
     //reset
     initial begin
@@ -37,7 +37,7 @@ program cross_bar_crv_test(
     //main test
     initial begin
         reset_sem.get();
-        env.seq.SetNumberOfIterations(2); //it is static method       
+        env.seq.SetNumberOfIterations(5); //it is static method       
         StartTestingThroughAllObjects();
         ShowCongratulation();
         $stop;

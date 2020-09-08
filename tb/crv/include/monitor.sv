@@ -33,8 +33,8 @@ class monitor;
     task main();
             transaction master_0_trans, master_1_trans, master_2_trans, master_3_trans; //mastert transaction -> 
             transaction slave_0_trans, slave_1_trans, slave_2_trans, slave_3_trans;     // -> slave transaction
-            reply slave_0_rep, slave_1_rep, slave_2_rep, slave_3_rep;                   //slave response ->
-            reply master_0_rep, master_1_rep, master_2_rep, master_3_rep;               // -> master response
+            reply slave_0_resp, slave_1_resp, slave_2_resp, slave_3_resp;                   //slave response ->
+            reply master_0_resp, master_1_resp, master_2_resp, master_3_resp;               // -> master response
 
             master_0_trans = new();
             master_1_trans = new();
@@ -68,15 +68,15 @@ class monitor;
                 RequestIfListener(slave_3_if, slave_3_mon2scb, slave_3_trans);
 
                 //send secondly
-                ReplyIfListener(master_0_if, master_0_mon2scb, master_0_rep);
-                ReplyIfListener(master_1_if, master_1_mon2scb, master_1_rep);
-                ReplyIfListener(master_2_if, master_2_mon2scb, master_2_rep);
-                ReplyIfListener(master_3_if, master_3_mon2scb, master_3_rep);
+ /*               ReplyIfListener(master_0_if, master_0_mon2scb, master_0_resp);
+                ReplyIfListener(master_1_if, master_1_mon2scb, master_1_resp);
+                ReplyIfListener(master_2_if, master_2_mon2scb, master_2_resp);
+                ReplyIfListener(master_3_if, master_3_mon2scb, master_3_resp);
 
-                ReplyIfListener(slave_0_if, slave_0_mon2scb, slave_0_rep);
-                ReplyIfListener(slave_1_if, slave_1_mon2scb, slave_1_rep);
-                ReplyIfListener(slave_2_if, slave_2_mon2scb, slave_2_rep);
-                ReplyIfListener(slave_3_if, slave_3_mon2scb, slave_3_rep);
+                ReplyIfListener(slave_0_if, slave_0_mon2scb, slave_0_resp);
+                ReplyIfListener(slave_1_if, slave_1_mon2scb, slave_1_resp);
+                ReplyIfListener(slave_2_if, slave_2_mon2scb, slave_2_resp);
+                ReplyIfListener(slave_3_if, slave_3_mon2scb, slave_3_resp); */
             join
     endtask
 
@@ -85,7 +85,7 @@ class monitor;
         begin                
             @(posedge _if._req);              
             trans.addr = _if._addr;
-            trans.wdata = _if._wdata
+            trans.wdata = _if._wdata;
             trans.cmd = _if._cmd;
             mail.put(trans);            
         end    
@@ -94,7 +94,7 @@ class monitor;
     task ReplyIfListener(virtual cross_bar_if _if, mailbox mail, reply rep);
         forever 
         begin
-            @(posedge _if.ack);
+            @(posedge _if._ack);
             rep.session_complete = 1;
             if(_if._cmd) mail.put(rep);
             else

@@ -1,7 +1,7 @@
 `ifndef COMMUTATION_BLOCK
 `define COMMUTATION_BLOCK
 
-`define DEBUG
+//`define DEBUG
 
 
 package mux_connection;
@@ -289,7 +289,13 @@ module slave_mux #(
         end   
     end        
         
-
+    //comb logic cause 1 cycle delay is not acceptable    
+    always_comb
+    begin
+        session_is_finished = 0;
+        if(slave_if._cmd && slave_if._ack) session_is_finished = 1;
+        if(slave_if._resp) session_is_finished = 1;
+    end
 
     typedef enum logic [1:0] {enWAITING_FOR_REQUEST, enWAITING_FOR_ACK, enREADING_DATA_FROM_SLAVE} fsm_state_t;
     fsm_state_t fsm_state;
@@ -298,14 +304,12 @@ module slave_mux #(
     if(~rst_n)
     begin
         fsm_state <= enWAITING_FOR_REQUEST;
-        session_is_finished <= 0;
     end
     else
     begin
         unique case(fsm_state)
             enWAITING_FOR_REQUEST:
             begin
-                session_is_finished <= 0;
                 if(|granted_master) fsm_state <= enWAITING_FOR_ACK;  //would be set till session_is_finished = 1. no further check is needed
             end    
 
@@ -314,7 +318,6 @@ module slave_mux #(
                 if(slave_if._ack) 
                     if(slave_if._cmd) // 1-write, 0-read
                     begin
-                        session_is_finished <= 1;
                         fsm_state <= enWAITING_FOR_REQUEST; 
                     end
                     else fsm_state <= enREADING_DATA_FROM_SLAVE;                   
@@ -324,7 +327,6 @@ module slave_mux #(
             begin
                 if(slave_if._resp)
                 begin
-                    session_is_finished <= 1;
                     fsm_state <= enWAITING_FOR_REQUEST;              
                 end    
             end
@@ -333,7 +335,6 @@ module slave_mux #(
 
     initial begin
         fsm_state = enWAITING_FOR_REQUEST;
-        session_is_finished = 0;
     end 
 
 //***************************DEBUG STUFF*************************

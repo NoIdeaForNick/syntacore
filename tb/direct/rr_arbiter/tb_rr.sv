@@ -47,8 +47,28 @@ initial begin
     session_is_finished <= 0;
     repeat(5) @(posedge clk);
     session_is_finished <= 1;
-
-
+    repeat(5) @(posedge clk);
+    session_is_finished <= 0;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 1;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 0;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 1;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 0;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 1;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 0;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 1;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 0;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 1;
+    repeat(5) @(posedge clk);
+    session_is_finished <= 0;
     
 
 end

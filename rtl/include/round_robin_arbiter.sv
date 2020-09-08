@@ -29,13 +29,12 @@ module round_robin_arbiter (
         req_buf = 0;
     end        
         
-    always @(posedge clk)
-        if(session_is_finished) $display("%m %t session_is_finished req = %h", $time, req);
-
     always @(posedge clk, negedge rst_an)
         if(~rst_an) req_buf <= 0;
         else
-            if(!grant || session_is_finished)  req_buf <= req; //sampling when no active grants OR last grant session is finished so get new one
+            if(session_is_finished) req_buf <= 0;
+            else
+                if(!grant)  req_buf <= req; //sampling when no active grants OR last grant session is finished so get new one
 
     // shift req_buf to round robin the current priority
     always_comb

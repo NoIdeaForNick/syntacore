@@ -15,6 +15,9 @@
 *.rpt
 *.wlf
 *.qws
+*.qdb
+*.qpg
+*.qtl
 
 *.wdf
 *.wpc
@@ -33,4 +36,5 @@
 
 prj/quartus/db
 prj/quartus/incremental_db
+scripts/work
 
