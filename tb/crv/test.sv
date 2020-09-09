@@ -53,7 +53,7 @@ program cross_bar_crv_test(
     semaphore test_order_sem;
 
     string objects_for_testing[] = {"full random", "fixed delay", "single slave", "single slave obligate", "single slave obligate simultaneous"};
-    bit is_coverage_enabled = 1;
+    bit is_coverage_enabled = 0;
 
     //reset
     initial begin
