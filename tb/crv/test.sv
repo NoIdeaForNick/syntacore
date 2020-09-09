@@ -20,31 +20,29 @@ program cross_bar_crv_test(
 );
 
     covergroup cross_bar_coverage @(posedge clk);
-        all_slaves_appointed_from_master_0: coverpoint env.seq.master_0_trans.appointed_slave iff(master_0_if._req);
-        all_slaves_appointed_from_master_1: coverpoint env.seq.master_1_trans.appointed_slave iff(master_1_if._req);
-        all_slaves_appointed_from_master_2: coverpoint env.seq.master_2_trans.appointed_slave iff(master_2_if._req);
-        all_slaves_appointed_from_master_3: coverpoint env.seq.master_3_trans.appointed_slave iff(master_3_if._req);
+        all_slaves_appointed_from_master_0: coverpoint master_0_if._addr[31:30] iff(master_0_if._req);
+        all_slaves_appointed_from_master_1: coverpoint master_1_if._addr[31:30] iff(master_1_if._req);
+        all_slaves_appointed_from_master_2: coverpoint master_2_if._addr[31:30] iff(master_2_if._req);
+        all_slaves_appointed_from_master_3: coverpoint master_3_if._addr[31:30] iff(master_3_if._req);
 
         all_request_combinations: cross all_slaves_appointed_from_master_0, all_slaves_appointed_from_master_1, all_slaves_appointed_from_master_2, all_slaves_appointed_from_master_3;
 
         request_delay_from_master_0: coverpoint env.seq.master_0_trans.request_delay iff(master_0_if._req)
         {
-            option.auto_bin_max = 2;
+            option.auto_bin_max = 5;
         }
         request_delay_from_master_1: coverpoint env.seq.master_1_trans.request_delay iff(master_1_if._req)
         {
-            option.auto_bin_max = 2;
+            option.auto_bin_max = 5;
         }
         request_delay_from_master_2: coverpoint env.seq.master_2_trans.request_delay iff(master_2_if._req)
         {
-            option.auto_bin_max = 2;
+            option.auto_bin_max = 5;
         }
         request_delay_from_master_3: coverpoint env.seq.master_3_trans.request_delay iff(master_3_if._req)
         {
-            option.auto_bin_max = 2;
-        }
-
-        all_delay_combintaions: cross request_delay_from_master_0, request_delay_from_master_1, request_delay_from_master_2, request_delay_from_master_3;
+            option.auto_bin_max = 5;
+        } 
     endgroup 
 
     assign objects::clk = clk; //clk for drivers
@@ -72,12 +70,13 @@ program cross_bar_crv_test(
     initial begin
         reset_sem.get();
         test_order_sem.get();
-        $display("Starting coverage test...");
+        $display("Starting coverage test...It takes few mins!");
+        $display("Coverage test is running. You are able to pause whenever you want");
         env = new(  master_0_if, master_1_if, master_2_if, master_3_if, 
                     slave_0_if, slave_1_if, slave_2_if, slave_3_if,  
                     "full random", 0);
         while(simple_cover.get_coverage < 100) env.Run();
-        $display("Coverage test complete!");
+        ShowCongratulation("Coverage Test");
         $stop;       
     end
 
@@ -87,7 +86,7 @@ program cross_bar_crv_test(
         $display("Starting simple test...");
         env.seq.SetNumberOfIterations(5); //it is static method       
         StartTestingThroughAllObjects();
-        ShowCongratulation();
+        ShowCongratulation("Main Test");
         if(is_coverage_enabled) test_order_sem.put(); 
         else $stop;
     end
@@ -102,11 +101,11 @@ program cross_bar_crv_test(
         end
     endtask
 
-    function void ShowCongratulation();
-        $display("******************");
-        $display("------------------");
-        $display("TESTBENCH Passed!!! =)");
-        $display("------------------");
-        $display("******************");
+    function void ShowCongratulation(string test_type);
+        $display("**********************");
+        $display("----------------------");
+        $display("%s Passed!!! =)", test_type);
+        $display("----------------------");
+        $display("**********************");
     endfunction 
 endprogram

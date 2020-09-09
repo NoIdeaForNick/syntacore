@@ -9,9 +9,7 @@ class transaction;
 
     bit [1:0] appointed_slave;
 
-    rand shortint unsigned request_delay;
-
-    constraint c_request_delay {request_delay inside {[0:100]};}
+    rand byte unsigned request_delay;
 endclass
 
 

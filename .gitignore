@@ -34,6 +34,7 @@
 *.html
 *.backup
 *.sof
+c5_pin_model_dump.txt
 
 prj/quartus/db
 prj/quartus/incremental_db

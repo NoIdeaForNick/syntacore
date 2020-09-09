@@ -5,9 +5,9 @@ Covergroup                                             Metric       Goal    Stat
 -----------------------------------------------------------------------------------------------
  TYPE /tb_top/special_cases_plus_coverage/cross_bar_coverage 
                                                         99.8%        100    Uncovered            
-    covered/total bins:                                   289        292                      
-    missing/total bins:                                     3        292                      
-    % Hit:                                              98.9%        100                      
+    covered/total bins:                                   288        292                      
+    missing/total bins:                                     4        292                      
+    % Hit:                                              98.6%        100                      
     type_option.weight=1
     type_option.goal=100
     type_option.comment=
@@ -78,18 +78,18 @@ Covergroup                                             Metric       Goal    Stat
         type_option.goal=100
         type_option.comment=
     Cross cross_bar_coverage::all_request_combinations 
-                                                        98.8%        100    Uncovered            
-        covered/total bins:                               253        256                      
-        missing/total bins:                                 3        256                      
-        % Hit:                                          98.8%        100                      
+                                                        98.4%        100    Uncovered            
+        covered/total bins:                               252        256                      
+        missing/total bins:                                 4        256                      
+        % Hit:                                          98.4%        100                      
         type_option.weight=1
         type_option.goal=100
         type_option.comment=
  Covergroup instance \/tb_top/special_cases_plus_coverage/simple_cover  
                                                         99.8%        100    Uncovered            
-    covered/total bins:                                   289        292                      
-    missing/total bins:                                     3        292                      
-    % Hit:                                              98.9%        100                      
+    covered/total bins:                                   288        292                      
+    missing/total bins:                                     4        292                      
+    % Hit:                                              98.6%        100                      
     option.name=\/tb_top/special_cases_plus_coverage/simple_cover 
     option.weight=1
     option.goal=100
@@ -110,10 +110,10 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=64
         option.detect_overlap=0
-        bin auto[0]                                    169821          1    Covered              
-        bin auto[1]                                    171145          1    Covered              
-        bin auto[2]                                    167997          1    Covered              
-        bin auto[3]                                    169507          1    Covered              
+        bin auto[0]                                    160068          1    Covered              
+        bin auto[1]                                    161652          1    Covered              
+        bin auto[2]                                    158303          1    Covered              
+        bin auto[3]                                    159831          1    Covered              
     Coverpoint all_slaves_appointed_from_master_1      100.0%        100    Covered              
         covered/total bins:                                 4          4                      
         missing/total bins:                                 0          4                      
@@ -124,10 +124,10 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=64
         option.detect_overlap=0
-        bin auto[0]                                    170620          1    Covered              
-        bin auto[1]                                    170848          1    Covered              
-        bin auto[2]                                    168899          1    Covered              
-        bin auto[3]                                    171041          1    Covered              
+        bin auto[0]                                    161299          1    Covered              
+        bin auto[1]                                    161161          1    Covered              
+        bin auto[2]                                    159249          1    Covered              
+        bin auto[3]                                    161082          1    Covered              
     Coverpoint all_slaves_appointed_from_master_2      100.0%        100    Covered              
         covered/total bins:                                 4          4                      
         missing/total bins:                                 0          4                      
@@ -138,10 +138,10 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=64
         option.detect_overlap=0
-        bin auto[0]                                    169203          1    Covered              
-        bin auto[1]                                    169903          1    Covered              
-        bin auto[2]                                    170628          1    Covered              
-        bin auto[3]                                    169919          1    Covered              
+        bin auto[0]                                    159791          1    Covered              
+        bin auto[1]                                    160519          1    Covered              
+        bin auto[2]                                    160603          1    Covered              
+        bin auto[3]                                    160289          1    Covered              
     Coverpoint all_slaves_appointed_from_master_3      100.0%        100    Covered              
         covered/total bins:                                 4          4                      
         missing/total bins:                                 0          4                      
@@ -152,10 +152,10 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=64
         option.detect_overlap=0
-        bin auto[0]                                    170092          1    Covered              
-        bin auto[1]                                    171239          1    Covered              
-        bin auto[2]                                    169369          1    Covered              
-        bin auto[3]                                    169766          1    Covered              
+        bin auto[0]                                    160693          1    Covered              
+        bin auto[1]                                    161255          1    Covered              
+        bin auto[2]                                    159703          1    Covered              
+        bin auto[3]                                    159905          1    Covered              
     Coverpoint request_delay_from_master_0             100.0%        100    Covered              
         covered/total bins:                                 5          5                      
         missing/total bins:                                 0          5                      
@@ -166,11 +166,11 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=5
         option.detect_overlap=0
-        bin auto[0:50]                                 164952          1    Covered              
-        bin auto[51:101]                               164564          1    Covered              
-        bin auto[102:152]                              149379          1    Covered              
-        bin auto[153:203]                              118548          1    Covered              
-        bin auto[204:255]                               81027          1    Covered              
+        bin auto[0:50]                                 155678          1    Covered              
+        bin auto[51:101]                               155302          1    Covered              
+        bin auto[102:152]                              140688          1    Covered              
+        bin auto[153:203]                              111734          1    Covered              
+        bin auto[204:255]                               76452          1    Covered              
     Coverpoint request_delay_from_master_1             100.0%        100    Covered              
         covered/total bins:                                 5          5                      
         missing/total bins:                                 0          5                      
@@ -181,11 +181,11 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=5
         option.detect_overlap=0
-        bin auto[0:50]                                 165989          1    Covered              
-        bin auto[51:101]                               163343          1    Covered              
-        bin auto[102:152]                              150168          1    Covered              
-        bin auto[153:203]                              119602          1    Covered              
-        bin auto[204:255]                               82306          1    Covered              
+        bin auto[0:50]                                 156774          1    Covered              
+        bin auto[51:101]                               154009          1    Covered              
+        bin auto[102:152]                              141542          1    Covered              
+        bin auto[153:203]                              112662          1    Covered              
+        bin auto[204:255]                               77804          1    Covered              
     Coverpoint request_delay_from_master_2             100.0%        100    Covered              
         covered/total bins:                                 5          5                      
         missing/total bins:                                 0          5                      
@@ -196,11 +196,11 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=5
         option.detect_overlap=0
-        bin auto[0:50]                                 164502          1    Covered              
-        bin auto[51:101]                               161973          1    Covered              
-        bin auto[102:152]                              149608          1    Covered              
-        bin auto[153:203]                              120358          1    Covered              
-        bin auto[204:255]                               83212          1    Covered              
+        bin auto[0:50]                                 155294          1    Covered              
+        bin auto[51:101]                               152907          1    Covered              
+        bin auto[102:152]                              141080          1    Covered              
+        bin auto[153:203]                              113677          1    Covered              
+        bin auto[204:255]                               78244          1    Covered              
     Coverpoint request_delay_from_master_3             100.0%        100    Covered              
         covered/total bins:                                 5          5                      
         missing/total bins:                                 0          5                      
@@ -211,21 +211,21 @@ Covergroup                                             Metric       Goal    Stat
         option.at_least=1
         option.auto_bin_max=5
         option.detect_overlap=0
-        bin auto[0:50]                                 163212          1    Covered              
-        bin auto[51:101]                               164520          1    Covered              
-        bin auto[102:152]                              149813          1    Covered              
-        bin auto[153:203]                              120405          1    Covered              
-        bin auto[204:255]                               82516          1    Covered              
-    Cross all_request_combinations                      98.8%        100    Uncovered            
-        covered/total bins:                               253        256                      
-        missing/total bins:                                 3        256                      
-        % Hit:                                          98.8%        100                      
+        bin auto[0:50]                                 153504          1    Covered              
+        bin auto[51:101]                               155431          1    Covered              
+        bin auto[102:152]                              141233          1    Covered              
+        bin auto[153:203]                              113455          1    Covered              
+        bin auto[204:255]                               77933          1    Covered              
+    Cross all_request_combinations                      98.4%        100    Uncovered            
+        covered/total bins:                               252        256                      
+        missing/total bins:                                 4        256                      
+        % Hit:                                          98.4%        100                      
         option.weight=1
         option.goal=100
         option.comment=
         option.at_least=1
         option.cross_num_print_missing=0
-        bin <auto[0],auto[0],auto[0],auto[0]>             334          1    Covered              
+        bin <auto[0],auto[0],auto[0],auto[0]>             321          1    Covered              
         bin <auto[1],auto[0],auto[0],auto[0]>             134          1    Covered              
         bin <auto[2],auto[0],auto[0],auto[0]>              76          1    Covered              
         bin <auto[3],auto[0],auto[0],auto[0]>             207          1    Covered              
@@ -235,39 +235,39 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[3],auto[1],auto[0],auto[0]>             103          1    Covered              
         bin <auto[0],auto[2],auto[0],auto[0]>             167          1    Covered              
         bin <auto[1],auto[2],auto[0],auto[0]>              86          1    Covered              
-        bin <auto[2],auto[2],auto[0],auto[0]>              97          1    Covered              
+        bin <auto[2],auto[2],auto[0],auto[0]>              76          1    Covered              
         bin <auto[3],auto[2],auto[0],auto[0]>             158          1    Covered              
-        bin <auto[0],auto[3],auto[0],auto[0]>             156          1    Covered              
+        bin <auto[0],auto[3],auto[0],auto[0]>             144          1    Covered              
         bin <auto[1],auto[3],auto[0],auto[0]>              57          1    Covered              
         bin <auto[2],auto[3],auto[0],auto[0]>             114          1    Covered              
-        bin <auto[3],auto[3],auto[0],auto[0]>             158          1    Covered              
-        bin <auto[0],auto[0],auto[1],auto[0]>             149          1    Covered              
+        bin <auto[3],auto[3],auto[0],auto[0]>             128          1    Covered              
+        bin <auto[0],auto[0],auto[1],auto[0]>             121          1    Covered              
         bin <auto[1],auto[0],auto[1],auto[0]>              99          1    Covered              
         bin <auto[2],auto[0],auto[1],auto[0]>              12          1    Covered              
-        bin <auto[3],auto[0],auto[1],auto[0]>              77          1    Covered              
+        bin <auto[3],auto[0],auto[1],auto[0]>              71          1    Covered              
         bin <auto[0],auto[1],auto[1],auto[0]>             109          1    Covered              
         bin <auto[1],auto[1],auto[1],auto[0]>              67          1    Covered              
-        bin <auto[2],auto[1],auto[1],auto[0]>              66          1    Covered              
+        bin <auto[2],auto[1],auto[1],auto[0]>              41          1    Covered              
         bin <auto[3],auto[1],auto[1],auto[0]>             146          1    Covered              
         bin <auto[0],auto[2],auto[1],auto[0]>              12          1    Covered              
         bin <auto[1],auto[2],auto[1],auto[0]>              92          1    Covered              
         bin <auto[2],auto[2],auto[1],auto[0]>              15          1    Covered              
-        bin <auto[3],auto[2],auto[1],auto[0]>              29          1    Covered              
+        bin <auto[3],auto[2],auto[1],auto[0]>              12          1    Covered              
         bin <auto[0],auto[3],auto[1],auto[0]>             115          1    Covered              
         bin <auto[1],auto[3],auto[1],auto[0]>              95          1    Covered              
-        bin <auto[2],auto[3],auto[1],auto[0]>             125          1    Covered              
+        bin <auto[2],auto[3],auto[1],auto[0]>             119          1    Covered              
         bin <auto[3],auto[3],auto[1],auto[0]>              86          1    Covered              
         bin <auto[0],auto[0],auto[2],auto[0]>             166          1    Covered              
-        bin <auto[1],auto[0],auto[2],auto[0]>             117          1    Covered              
+        bin <auto[1],auto[0],auto[2],auto[0]>              67          1    Covered              
         bin <auto[2],auto[0],auto[2],auto[0]>             167          1    Covered              
-        bin <auto[3],auto[0],auto[2],auto[0]>             140          1    Covered              
+        bin <auto[3],auto[0],auto[2],auto[0]>             117          1    Covered              
         bin <auto[0],auto[1],auto[2],auto[0]>             129          1    Covered              
-        bin <auto[1],auto[1],auto[2],auto[0]>             123          1    Covered              
+        bin <auto[1],auto[1],auto[2],auto[0]>              80          1    Covered              
         bin <auto[2],auto[1],auto[2],auto[0]>             171          1    Covered              
         bin <auto[3],auto[1],auto[2],auto[0]>              98          1    Covered              
-        bin <auto[0],auto[2],auto[2],auto[0]>             125          1    Covered              
+        bin <auto[0],auto[2],auto[2],auto[0]>              87          1    Covered              
         bin <auto[2],auto[2],auto[2],auto[0]>             237          1    Covered              
-        bin <auto[3],auto[2],auto[2],auto[0]>             101          1    Covered              
+        bin <auto[3],auto[2],auto[2],auto[0]>              89          1    Covered              
         bin <auto[0],auto[3],auto[2],auto[0]>              68          1    Covered              
         bin <auto[1],auto[3],auto[2],auto[0]>              94          1    Covered              
         bin <auto[2],auto[3],auto[2],auto[0]>              82          1    Covered              
@@ -279,8 +279,8 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[0],auto[1],auto[3],auto[0]>              47          1    Covered              
         bin <auto[1],auto[1],auto[3],auto[0]>              50          1    Covered              
         bin <auto[2],auto[1],auto[3],auto[0]>              38          1    Covered              
-        bin <auto[3],auto[1],auto[3],auto[0]>             159          1    Covered              
-        bin <auto[0],auto[2],auto[3],auto[0]>              76          1    Covered              
+        bin <auto[3],auto[1],auto[3],auto[0]>             124          1    Covered              
+        bin <auto[0],auto[2],auto[3],auto[0]>              63          1    Covered              
         bin <auto[1],auto[2],auto[3],auto[0]>             124          1    Covered              
         bin <auto[2],auto[2],auto[3],auto[0]>              92          1    Covered              
         bin <auto[3],auto[2],auto[3],auto[0]>             132          1    Covered              
@@ -290,14 +290,14 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[3],auto[3],auto[3],auto[0]>              99          1    Covered              
         bin <auto[0],auto[0],auto[0],auto[1]>             192          1    Covered              
         bin <auto[1],auto[0],auto[0],auto[1]>              86          1    Covered              
-        bin <auto[2],auto[0],auto[0],auto[1]>              45          1    Covered              
-        bin <auto[3],auto[0],auto[0],auto[1]>             190          1    Covered              
+        bin <auto[2],auto[0],auto[0],auto[1]>              15          1    Covered              
+        bin <auto[3],auto[0],auto[0],auto[1]>             156          1    Covered              
         bin <auto[0],auto[1],auto[0],auto[1]>             169          1    Covered              
         bin <auto[1],auto[1],auto[0],auto[1]>              28          1    Covered              
         bin <auto[2],auto[1],auto[0],auto[1]>              55          1    Covered              
         bin <auto[3],auto[1],auto[0],auto[1]>              73          1    Covered              
         bin <auto[0],auto[2],auto[0],auto[1]>              52          1    Covered              
-        bin <auto[1],auto[2],auto[0],auto[1]>             153          1    Covered              
+        bin <auto[1],auto[2],auto[0],auto[1]>             130          1    Covered              
         bin <auto[2],auto[2],auto[0],auto[1]>              99          1    Covered              
         bin <auto[3],auto[2],auto[0],auto[1]>              30          1    Covered              
         bin <auto[0],auto[3],auto[0],auto[1]>             190          1    Covered              
@@ -306,8 +306,8 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[3],auto[3],auto[0],auto[1]>              42          1    Covered              
         bin <auto[0],auto[0],auto[1],auto[1]>              50          1    Covered              
         bin <auto[1],auto[0],auto[1],auto[1]>             137          1    Covered              
-        bin <auto[2],auto[0],auto[1],auto[1]>             224          1    Covered              
-        bin <auto[3],auto[0],auto[1],auto[1]>              97          1    Covered              
+        bin <auto[2],auto[0],auto[1],auto[1]>             207          1    Covered              
+        bin <auto[3],auto[0],auto[1],auto[1]>              75          1    Covered              
         bin <auto[0],auto[1],auto[1],auto[1]>              45          1    Covered              
         bin <auto[1],auto[1],auto[1],auto[1]>             164          1    Covered              
         bin <auto[2],auto[1],auto[1],auto[1]>             210          1    Covered              
@@ -317,11 +317,11 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[2],auto[2],auto[1],auto[1]>              84          1    Covered              
         bin <auto[3],auto[2],auto[1],auto[1]>              33          1    Covered              
         bin <auto[0],auto[3],auto[1],auto[1]>              77          1    Covered              
-        bin <auto[1],auto[3],auto[1],auto[1]>             219          1    Covered              
+        bin <auto[1],auto[3],auto[1],auto[1]>             202          1    Covered              
         bin <auto[2],auto[3],auto[1],auto[1]>              64          1    Covered              
         bin <auto[3],auto[3],auto[1],auto[1]>              87          1    Covered              
         bin <auto[0],auto[0],auto[2],auto[1]>              98          1    Covered              
-        bin <auto[1],auto[0],auto[2],auto[1]>              90          1    Covered              
+        bin <auto[1],auto[0],auto[2],auto[1]>              66          1    Covered              
         bin <auto[2],auto[0],auto[2],auto[1]>              13          1    Covered              
         bin <auto[3],auto[0],auto[2],auto[1]>              87          1    Covered              
         bin <auto[0],auto[1],auto[2],auto[1]>              94          1    Covered              
@@ -339,13 +339,13 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[0],auto[0],auto[3],auto[1]>              78          1    Covered              
         bin <auto[1],auto[0],auto[3],auto[1]>              28          1    Covered              
         bin <auto[2],auto[0],auto[3],auto[1]>              59          1    Covered              
-        bin <auto[3],auto[0],auto[3],auto[1]>              95          1    Covered              
+        bin <auto[3],auto[0],auto[3],auto[1]>              68          1    Covered              
         bin <auto[0],auto[1],auto[3],auto[1]>              37          1    Covered              
         bin <auto[1],auto[1],auto[3],auto[1]>              87          1    Covered              
         bin <auto[2],auto[1],auto[3],auto[1]>              75          1    Covered              
         bin <auto[3],auto[1],auto[3],auto[1]>             127          1    Covered              
         bin <auto[0],auto[2],auto[3],auto[1]>              15          1    Covered              
-        bin <auto[1],auto[2],auto[3],auto[1]>             230          1    Covered              
+        bin <auto[1],auto[2],auto[3],auto[1]>             173          1    Covered              
         bin <auto[2],auto[2],auto[3],auto[1]>              68          1    Covered              
         bin <auto[3],auto[2],auto[3],auto[1]>              80          1    Covered              
         bin <auto[0],auto[3],auto[3],auto[1]>             116          1    Covered              
@@ -357,7 +357,7 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[2],auto[0],auto[0],auto[2]>             142          1    Covered              
         bin <auto[3],auto[0],auto[0],auto[2]>              56          1    Covered              
         bin <auto[0],auto[1],auto[0],auto[2]>              36          1    Covered              
-        bin <auto[1],auto[1],auto[0],auto[2]>             150          1    Covered              
+        bin <auto[1],auto[1],auto[0],auto[2]>             123          1    Covered              
         bin <auto[2],auto[1],auto[0],auto[2]>              82          1    Covered              
         bin <auto[3],auto[1],auto[0],auto[2]>              72          1    Covered              
         bin <auto[0],auto[2],auto[0],auto[2]>              50          1    Covered              
@@ -366,16 +366,16 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[3],auto[2],auto[0],auto[2]>              46          1    Covered              
         bin <auto[0],auto[3],auto[0],auto[2]>              50          1    Covered              
         bin <auto[1],auto[3],auto[0],auto[2]>              93          1    Covered              
-        bin <auto[2],auto[3],auto[0],auto[2]>              49          1    Covered              
+        bin <auto[2],auto[3],auto[0],auto[2]>              39          1    Covered              
         bin <auto[3],auto[3],auto[0],auto[2]>              33          1    Covered              
-        bin <auto[0],auto[0],auto[1],auto[2]>              97          1    Covered              
+        bin <auto[0],auto[0],auto[1],auto[2]>              81          1    Covered              
         bin <auto[1],auto[0],auto[1],auto[2]>              52          1    Covered              
         bin <auto[2],auto[0],auto[1],auto[2]>             175          1    Covered              
         bin <auto[3],auto[0],auto[1],auto[2]>              77          1    Covered              
         bin <auto[0],auto[1],auto[1],auto[2]>              59          1    Covered              
         bin <auto[1],auto[1],auto[1],auto[2]>              33          1    Covered              
         bin <auto[2],auto[1],auto[1],auto[2]>              29          1    Covered              
-        bin <auto[3],auto[1],auto[1],auto[2]>              58          1    Covered              
+        bin <auto[3],auto[1],auto[1],auto[2]>              35          1    Covered              
         bin <auto[0],auto[2],auto[1],auto[2]>             133          1    Covered              
         bin <auto[1],auto[2],auto[1],auto[2]>             238          1    Covered              
         bin <auto[2],auto[2],auto[1],auto[2]>              90          1    Covered              
@@ -383,20 +383,20 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[0],auto[3],auto[1],auto[2]>              22          1    Covered              
         bin <auto[1],auto[3],auto[1],auto[2]>             163          1    Covered              
         bin <auto[2],auto[3],auto[1],auto[2]>              31          1    Covered              
-        bin <auto[3],auto[3],auto[1],auto[2]>              22          1    Covered              
-        bin <auto[0],auto[0],auto[2],auto[2]>              95          1    Covered              
+        bin <auto[3],auto[3],auto[1],auto[2]>              12          1    Covered              
+        bin <auto[0],auto[0],auto[2],auto[2]>              74          1    Covered              
         bin <auto[1],auto[0],auto[2],auto[2]>              85          1    Covered              
         bin <auto[2],auto[0],auto[2],auto[2]>              37          1    Covered              
         bin <auto[3],auto[0],auto[2],auto[2]>             119          1    Covered              
-        bin <auto[0],auto[1],auto[2],auto[2]>             198          1    Covered              
+        bin <auto[0],auto[1],auto[2],auto[2]>             149          1    Covered              
         bin <auto[1],auto[1],auto[2],auto[2]>             125          1    Covered              
-        bin <auto[2],auto[1],auto[2],auto[2]>              43          1    Covered              
+        bin <auto[2],auto[1],auto[2],auto[2]>              18          1    Covered              
         bin <auto[3],auto[1],auto[2],auto[2]>              29          1    Covered              
         bin <auto[0],auto[2],auto[2],auto[2]>              51          1    Covered              
         bin <auto[1],auto[2],auto[2],auto[2]>              56          1    Covered              
         bin <auto[2],auto[2],auto[2],auto[2]>              92          1    Covered              
-        bin <auto[3],auto[2],auto[2],auto[2]>             122          1    Covered              
-        bin <auto[0],auto[3],auto[2],auto[2]>              50          1    Covered              
+        bin <auto[3],auto[2],auto[2],auto[2]>              97          1    Covered              
+        bin <auto[0],auto[3],auto[2],auto[2]>              34          1    Covered              
         bin <auto[1],auto[3],auto[2],auto[2]>             150          1    Covered              
         bin <auto[2],auto[3],auto[2],auto[2]>             117          1    Covered              
         bin <auto[3],auto[3],auto[2],auto[2]>             136          1    Covered              
@@ -405,32 +405,31 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[2],auto[0],auto[3],auto[2]>              58          1    Covered              
         bin <auto[3],auto[0],auto[3],auto[2]>              75          1    Covered              
         bin <auto[0],auto[1],auto[3],auto[2]>              92          1    Covered              
-        bin <auto[1],auto[1],auto[3],auto[2]>             277          1    Covered              
+        bin <auto[1],auto[1],auto[3],auto[2]>             215          1    Covered              
         bin <auto[2],auto[1],auto[3],auto[2]>             124          1    Covered              
         bin <auto[3],auto[1],auto[3],auto[2]>             141          1    Covered              
-        bin <auto[0],auto[2],auto[3],auto[2]>             101          1    Covered              
-        bin <auto[1],auto[2],auto[3],auto[2]>              75          1    Covered              
+        bin <auto[0],auto[2],auto[3],auto[2]>              60          1    Covered              
+        bin <auto[1],auto[2],auto[3],auto[2]>              43          1    Covered              
         bin <auto[2],auto[2],auto[3],auto[2]>              74          1    Covered              
         bin <auto[3],auto[2],auto[3],auto[2]>             170          1    Covered              
         bin <auto[0],auto[3],auto[3],auto[2]>             112          1    Covered              
-        bin <auto[1],auto[3],auto[3],auto[2]>              78          1    Covered              
-        bin <auto[2],auto[3],auto[3],auto[2]>              66          1    Covered              
+        bin <auto[1],auto[3],auto[3],auto[2]>              55          1    Covered              
+        bin <auto[2],auto[3],auto[3],auto[2]>              40          1    Covered              
         bin <auto[3],auto[3],auto[3],auto[2]>              54          1    Covered              
-        bin <auto[0],auto[0],auto[0],auto[3]>              36          1    Covered              
-        bin <auto[1],auto[0],auto[0],auto[3]>              74          1    Covered              
+        bin <auto[1],auto[0],auto[0],auto[3]>              55          1    Covered              
         bin <auto[2],auto[0],auto[0],auto[3]>              58          1    Covered              
         bin <auto[3],auto[0],auto[0],auto[3]>              71          1    Covered              
         bin <auto[0],auto[1],auto[0],auto[3]>              76          1    Covered              
         bin <auto[1],auto[1],auto[0],auto[3]>              25          1    Covered              
         bin <auto[2],auto[1],auto[0],auto[3]>              37          1    Covered              
         bin <auto[3],auto[1],auto[0],auto[3]>             163          1    Covered              
-        bin <auto[0],auto[2],auto[0],auto[3]>              88          1    Covered              
+        bin <auto[0],auto[2],auto[0],auto[3]>              29          1    Covered              
         bin <auto[1],auto[2],auto[0],auto[3]>              38          1    Covered              
         bin <auto[2],auto[2],auto[0],auto[3]>             109          1    Covered              
         bin <auto[3],auto[2],auto[0],auto[3]>             147          1    Covered              
         bin <auto[0],auto[3],auto[0],auto[3]>              23          1    Covered              
         bin <auto[1],auto[3],auto[0],auto[3]>             123          1    Covered              
-        bin <auto[2],auto[3],auto[0],auto[3]>             163          1    Covered              
+        bin <auto[2],auto[3],auto[0],auto[3]>             140          1    Covered              
         bin <auto[3],auto[3],auto[0],auto[3]>              52          1    Covered              
         bin <auto[0],auto[0],auto[1],auto[3]>              84          1    Covered              
         bin <auto[1],auto[0],auto[1],auto[3]>              71          1    Covered              
@@ -438,47 +437,48 @@ Covergroup                                             Metric       Goal    Stat
         bin <auto[3],auto[0],auto[1],auto[3]>             174          1    Covered              
         bin <auto[0],auto[1],auto[1],auto[3]>             122          1    Covered              
         bin <auto[1],auto[1],auto[1],auto[3]>             132          1    Covered              
-        bin <auto[2],auto[1],auto[1],auto[3]>             288          1    Covered              
+        bin <auto[2],auto[1],auto[1],auto[3]>             243          1    Covered              
         bin <auto[3],auto[1],auto[1],auto[3]>             111          1    Covered              
         bin <auto[0],auto[2],auto[1],auto[3]>              52          1    Covered              
         bin <auto[1],auto[2],auto[1],auto[3]>              42          1    Covered              
-        bin <auto[2],auto[2],auto[1],auto[3]>             158          1    Covered              
+        bin <auto[2],auto[2],auto[1],auto[3]>             146          1    Covered              
         bin <auto[0],auto[3],auto[1],auto[3]>             185          1    Covered              
         bin <auto[1],auto[3],auto[1],auto[3]>              83          1    Covered              
         bin <auto[2],auto[3],auto[1],auto[3]>              40          1    Covered              
         bin <auto[3],auto[3],auto[1],auto[3]>             160          1    Covered              
         bin <auto[0],auto[0],auto[2],auto[3]>              53          1    Covered              
         bin <auto[1],auto[0],auto[2],auto[3]>              23          1    Covered              
-        bin <auto[2],auto[0],auto[2],auto[3]>              34          1    Covered              
-        bin <auto[3],auto[0],auto[2],auto[3]>             201          1    Covered              
+        bin <auto[2],auto[0],auto[2],auto[3]>              19          1    Covered              
+        bin <auto[3],auto[0],auto[2],auto[3]>             189          1    Covered              
         bin <auto[0],auto[1],auto[2],auto[3]>              25          1    Covered              
         bin <auto[1],auto[1],auto[2],auto[3]>              69          1    Covered              
-        bin <auto[2],auto[1],auto[2],auto[3]>              92          1    Covered              
+        bin <auto[2],auto[1],auto[2],auto[3]>              60          1    Covered              
         bin <auto[3],auto[1],auto[2],auto[3]>              16          1    Covered              
         bin <auto[0],auto[2],auto[2],auto[3]>              65          1    Covered              
-        bin <auto[1],auto[2],auto[2],auto[3]>             155          1    Covered              
+        bin <auto[1],auto[2],auto[2],auto[3]>             139          1    Covered              
         bin <auto[2],auto[2],auto[2],auto[3]>              37          1    Covered              
         bin <auto[3],auto[2],auto[2],auto[3]>             283          1    Covered              
-        bin <auto[0],auto[3],auto[2],auto[3]>              77          1    Covered              
-        bin <auto[1],auto[3],auto[2],auto[3]>              27          1    Covered              
-        bin <auto[2],auto[3],auto[2],auto[3]>             119          1    Covered              
+        bin <auto[0],auto[3],auto[2],auto[3]>              22          1    Covered              
+        bin <auto[1],auto[3],auto[2],auto[3]>              12          1    Covered              
+        bin <auto[2],auto[3],auto[2],auto[3]>              75          1    Covered              
         bin <auto[3],auto[3],auto[2],auto[3]>             188          1    Covered              
-        bin <auto[0],auto[0],auto[3],auto[3]>             167          1    Covered              
+        bin <auto[0],auto[0],auto[3],auto[3]>             133          1    Covered              
         bin <auto[1],auto[0],auto[3],auto[3]>              91          1    Covered              
         bin <auto[2],auto[0],auto[3],auto[3]>              57          1    Covered              
-        bin <auto[3],auto[0],auto[3],auto[3]>             127          1    Covered              
-        bin <auto[1],auto[1],auto[3],auto[3]>             127          1    Covered              
+        bin <auto[3],auto[0],auto[3],auto[3]>             103          1    Covered              
+        bin <auto[1],auto[1],auto[3],auto[3]>             103          1    Covered              
         bin <auto[2],auto[1],auto[3],auto[3]>             150          1    Covered              
         bin <auto[3],auto[1],auto[3],auto[3]>              84          1    Covered              
         bin <auto[0],auto[2],auto[3],auto[3]>              49          1    Covered              
         bin <auto[1],auto[2],auto[3],auto[3]>             149          1    Covered              
         bin <auto[2],auto[2],auto[3],auto[3]>             129          1    Covered              
         bin <auto[3],auto[2],auto[3],auto[3]>              92          1    Covered              
-        bin <auto[0],auto[3],auto[3],auto[3]>             194          1    Covered              
+        bin <auto[0],auto[3],auto[3],auto[3]>             175          1    Covered              
         bin <auto[1],auto[3],auto[3],auto[3]>              30          1    Covered              
-        bin <auto[2],auto[3],auto[3],auto[3]>             127          1    Covered              
+        bin <auto[2],auto[3],auto[3],auto[3]>             108          1    Covered              
         bin <auto[3],auto[3],auto[3],auto[3]>              77          1    Covered              
         bin <auto[1],auto[2],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[0],auto[3]>               0          1    ZERO                 
         bin <auto[3],auto[2],auto[1],auto[3]>               0          1    ZERO                 
         bin <auto[0],auto[1],auto[3],auto[3]>               0          1    ZERO                 
 
