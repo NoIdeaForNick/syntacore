@@ -1,0 +1,540 @@
+COVERGROUP COVERAGE:
+-----------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal    Status               
+                                                                                              
+-----------------------------------------------------------------------------------------------
+ TYPE /tb_top/special_cases_plus_coverage/cross_bar_coverage 
+                                                        30.6%        100    Uncovered            
+    covered/total bins:                                    10        296                      
+    missing/total bins:                                   286        296                      
+    % Hit:                                               3.3%        100                      
+    type_option.weight=1
+    type_option.goal=100
+    type_option.comment=
+    type_option.strobe=0
+    type_option.merge_instances=auto(0)
+    Coverpoint cross_bar_coverage::all_slaves_appointed_from_master_0 
+                                                        25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Coverpoint cross_bar_coverage::all_slaves_appointed_from_master_1 
+                                                        25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Coverpoint cross_bar_coverage::all_slaves_appointed_from_master_2 
+                                                        25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Coverpoint cross_bar_coverage::all_slaves_appointed_from_master_3 
+                                                        25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Coverpoint cross_bar_coverage::request_delay_from_master_0 
+                                                        50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Coverpoint cross_bar_coverage::request_delay_from_master_1 
+                                                        50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Coverpoint cross_bar_coverage::request_delay_from_master_2 
+                                                        50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Coverpoint cross_bar_coverage::request_delay_from_master_3 
+                                                        50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Cross cross_bar_coverage::all_request_combinations 
+                                                         0.3%        100    Uncovered            
+        covered/total bins:                                 1        256                      
+        missing/total bins:                               255        256                      
+        % Hit:                                           0.3%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+    Cross cross_bar_coverage::all_delay_combintaions 
+                                                         6.2%        100    Uncovered            
+        covered/total bins:                                 1         16                      
+        missing/total bins:                                15         16                      
+        % Hit:                                           6.2%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+ Covergroup instance \/tb_top/special_cases_plus_coverage/simple_cover  
+                                                        30.6%        100    Uncovered            
+    covered/total bins:                                    10        296                      
+    missing/total bins:                                   286        296                      
+    % Hit:                                               3.3%        100                      
+    option.name=\/tb_top/special_cases_plus_coverage/simple_cover 
+    option.weight=1
+    option.goal=100
+    option.comment=
+    option.at_least=1
+    option.auto_bin_max=64
+    option.cross_num_print_missing=0
+    option.detect_overlap=0
+    option.per_instance=0
+    option.get_inst_coverage=0
+    Coverpoint all_slaves_appointed_from_master_0       25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=64
+        option.detect_overlap=0
+        bin auto[0]                                   3537116          1    Covered              
+        bin auto[1]                                         0          1    ZERO                 
+        bin auto[2]                                         0          1    ZERO                 
+        bin auto[3]                                         0          1    ZERO                 
+    Coverpoint all_slaves_appointed_from_master_1       25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=64
+        option.detect_overlap=0
+        bin auto[0]                                   3538147          1    Covered              
+        bin auto[1]                                         0          1    ZERO                 
+        bin auto[2]                                         0          1    ZERO                 
+        bin auto[3]                                         0          1    ZERO                 
+    Coverpoint all_slaves_appointed_from_master_2       25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=64
+        option.detect_overlap=0
+        bin auto[0]                                   3538336          1    Covered              
+        bin auto[1]                                         0          1    ZERO                 
+        bin auto[2]                                         0          1    ZERO                 
+        bin auto[3]                                         0          1    ZERO                 
+    Coverpoint all_slaves_appointed_from_master_3       25.0%        100    Uncovered            
+        covered/total bins:                                 1          4                      
+        missing/total bins:                                 3          4                      
+        % Hit:                                          25.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=64
+        option.detect_overlap=0
+        bin auto[0]                                   3534009          1    Covered              
+        bin auto[1]                                         0          1    ZERO                 
+        bin auto[2]                                         0          1    ZERO                 
+        bin auto[3]                                         0          1    ZERO                 
+    Coverpoint request_delay_from_master_0              50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=2
+        option.detect_overlap=0
+        bin auto[0:32767]                             3537116          1    Covered              
+        bin auto[32768:65535]                               0          1    ZERO                 
+    Coverpoint request_delay_from_master_1              50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=2
+        option.detect_overlap=0
+        bin auto[0:32767]                             3538147          1    Covered              
+        bin auto[32768:65535]                               0          1    ZERO                 
+    Coverpoint request_delay_from_master_2              50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=2
+        option.detect_overlap=0
+        bin auto[0:32767]                             3538336          1    Covered              
+        bin auto[32768:65535]                               0          1    ZERO                 
+    Coverpoint request_delay_from_master_3              50.0%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                          50.0%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.auto_bin_max=2
+        option.detect_overlap=0
+        bin auto[0:32767]                             3534009          1    Covered              
+        bin auto[32768:65535]                               0          1    ZERO                 
+    Cross all_request_combinations                       0.3%        100    Uncovered            
+        covered/total bins:                                 1        256                      
+        missing/total bins:                               255        256                      
+        % Hit:                                           0.3%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.cross_num_print_missing=0
+        bin <auto[0],auto[0],auto[0],auto[0]>        21137361          1    Covered              
+        bin <auto[1],auto[0],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[0],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[1],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[2],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[3],auto[0]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[0],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[1],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[2],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[3],auto[1]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[0],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[1],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[2],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[3],auto[2]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[0],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[1],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[2],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[0],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[0],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[0],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[0],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[1],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[1],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[1],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[1],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[2],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[2],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[2],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[2],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[0],auto[3],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[1],auto[3],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[2],auto[3],auto[3],auto[3]>               0          1    ZERO                 
+        bin <auto[3],auto[3],auto[3],auto[3]>               0          1    ZERO                 
+    Cross all_delay_combintaions                         6.2%        100    Uncovered            
+        covered/total bins:                                 1         16                      
+        missing/total bins:                                15         16                      
+        % Hit:                                           6.2%        100                      
+        option.weight=1
+        option.goal=100
+        option.comment=
+        option.at_least=1
+        option.cross_num_print_missing=0
+        bin <auto[0:32767],auto[0:32767],auto[0:32767],auto[0:32767]> 
+                                                      1462762          1    Covered              
+        bin <auto[32768:65535],auto[0:32767],auto[0:32767],auto[0:32767]> 
+                                                            0          1    ZERO                 
+        bin <auto[0:32767],auto[32768:65535],auto[0:32767],auto[0:32767]> 
+                                                            0          1    ZERO                 
+        bin <auto[32768:65535],auto[32768:65535],auto[0:32767],auto[0:32767]> 
+                                                            0          1    ZERO                 
+        bin <auto[0:32767],auto[0:32767],auto[32768:65535],auto[0:32767]> 
+                                                            0          1    ZERO                 
+        bin <auto[32768:65535],auto[0:32767],auto[32768:65535],auto[0:32767]> 
+                                                            0          1    ZERO                 
+        bin <auto[0:32767],auto[32768:65535],auto[32768:65535],auto[0:32767]> 
+                                                            0          1    ZERO                 
+        bin <auto[32768:65535],auto[32768:65535],auto[32768:65535],auto[0:32767]> 
+                                                            0          1    ZERO                 
+        bin <auto[0:32767],auto[0:32767],auto[0:32767],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+        bin <auto[32768:65535],auto[0:32767],auto[0:32767],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+        bin <auto[0:32767],auto[32768:65535],auto[0:32767],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+        bin <auto[32768:65535],auto[32768:65535],auto[0:32767],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+        bin <auto[0:32767],auto[0:32767],auto[32768:65535],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+        bin <auto[32768:65535],auto[0:32767],auto[32768:65535],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+        bin <auto[0:32767],auto[32768:65535],auto[32768:65535],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+        bin <auto[32768:65535],auto[32768:65535],auto[32768:65535],auto[32768:65535]> 
+                                                            0          1    ZERO                 
+
+TOTAL COVERGROUP COVERAGE: 30.6%  COVERGROUP TYPES: 1
+
+ASSERTION RESULTS:
+-------------------------------------------------------
+Name                 File(Line)           Failure Pass 
+                                          Count   Count 
+-------------------------------------------------------
+/objects/sequencer/GetItem/#ublk#93371075#42/immed__44
+                     ../tb/crv/include/sequencer.sv(44)       0     1
+/objects/sequencer/GetItem/#ublk#93371075#48/immed__50
+                     ../tb/crv/include/sequencer.sv(50)       0     1
+/objects/sequencer/GetItem/#ublk#93371075#55/immed__57
+                     ../tb/crv/include/sequencer.sv(57)       0     1
+/objects/sequencer/GetItem/#ublk#93371075#62/immed__64
+                     ../tb/crv/include/sequencer.sv(64)       0     1
+/objects/sequencer/GetItem/#ublk#93371075#69/immed__71
+                     ../tb/crv/include/sequencer.sv(71)       0     1
+/objects/scoreboard/CompareReplies/immed__113
+                     ../tb/crv/include/scoreboard.sv(113)       0     1

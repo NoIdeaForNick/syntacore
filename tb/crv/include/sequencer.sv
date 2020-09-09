@@ -33,6 +33,8 @@ class sequencer;
     virtual function transaction GetItem();
         transaction base_trans;
         single_slave_transaction single_slave_trans;
+        single_slave_obligate_transaction single_slave_obligate_trans;
+        single_slave_obligate_simultaneous_transaction single_slave_obligate_simultaneous_trans;
         fixed_request_delay_transaction fixed_delay_trans;
 
         case(transaction_type)
@@ -49,12 +51,26 @@ class sequencer;
                 base_trans = single_slave_trans;
             end
 
+            "single slave obligate":
+            begin
+                single_slave_obligate_trans = new();
+                assert(single_slave_obligate_trans.randomize()) else ErrorHandler(transaction_type);
+                base_trans = single_slave_obligate_trans;
+            end
+
+            "single slave obligate simultaneous":
+            begin
+                single_slave_obligate_simultaneous_trans = new();
+                assert(single_slave_obligate_simultaneous_trans.randomize()) else ErrorHandler(transaction_type);
+                base_trans = single_slave_obligate_simultaneous_trans;
+            end
+
             "fixed delay":
             begin
                 fixed_delay_trans = new();
                 assert(fixed_delay_trans.randomize()) else ErrorHandler(transaction_type);
                 base_trans = fixed_delay_trans;                
-            end
+            end           
 
             default:
             begin

@@ -18,6 +18,7 @@
 *.qdb
 *.qpg
 *.qtl
+*.qarlog
 
 *.wdf
 *.wpc

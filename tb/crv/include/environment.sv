@@ -9,8 +9,10 @@ class environment;
     scoreboard scb;
 
     mailbox master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv;
-    mailbox master_0_mon2scb, master_1_mon2scb, master_2_mon2scb, master_3_mon2scb;
-    mailbox slave_0_mon2scb, slave_1_mon2scb, slave_2_mon2scb, slave_3_mon2scb;
+    mailbox master_0_request_mon2scb, master_1_request_mon2scb, master_2_request_mon2scb, master_3_request_mon2scb;
+    mailbox slave_0_request_mon2scb, slave_1_request_mon2scb, slave_2_request_mon2scb, slave_3_request_mon2scb;
+    mailbox master_0_reply_mon2scb, master_1_reply_mon2scb, master_2_reply_mon2scb, master_3_reply_mon2scb;
+    mailbox slave_0_reply_mon2scb, slave_1_reply_mon2scb, slave_2_reply_mon2scb, slave_3_reply_mon2scb;
 
     virtual cross_bar_if master_0_if, master_1_if, master_2_if, master_3_if;
     virtual cross_bar_if slave_0_if, slave_1_if, slave_2_if, slave_3_if;
@@ -37,23 +39,38 @@ class environment;
         master_1_seq2driv = new();
         master_2_seq2driv = new();
         master_3_seq2driv = new();
-        master_0_mon2scb = new();
-        master_1_mon2scb = new();
-        master_2_mon2scb = new();
-        master_3_mon2scb = new();
-        slave_0_mon2scb = new();
-        slave_1_mon2scb = new();
-        slave_2_mon2scb = new();
-        slave_3_mon2scb = new();
+        master_0_request_mon2scb = new();
+        master_1_request_mon2scb = new();
+        master_2_request_mon2scb = new();
+        master_3_request_mon2scb = new();
+        slave_0_request_mon2scb = new();
+        slave_1_request_mon2scb = new();
+        slave_2_request_mon2scb = new();
+        slave_3_request_mon2scb = new();
+        master_0_reply_mon2scb = new();
+        master_1_reply_mon2scb = new();
+        master_2_reply_mon2scb = new();
+        master_3_reply_mon2scb = new();
+        slave_0_reply_mon2scb = new();
+        slave_1_reply_mon2scb = new();
+        slave_2_reply_mon2scb = new();
+        slave_3_reply_mon2scb = new();
+
         seq = new(master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv, transaction_type);
         master_driv = new(master_0_if, master_1_if, master_2_if, master_3_if, master_0_seq2driv, master_1_seq2driv, master_2_seq2driv, master_3_seq2driv);
         slave_driv = new(slave_0_if, slave_1_if, slave_2_if, slave_3_if);
+
         mon = new(  master_0_if, master_1_if, master_2_if, master_3_if,
                     slave_0_if, slave_1_if, slave_2_if, slave_3_if,
-                    master_0_mon2scb, master_1_mon2scb, master_2_mon2scb, master_3_mon2scb,
-                    slave_0_mon2scb, slave_1_mon2scb, slave_2_mon2scb, slave_3_mon2scb);
-        scb = new(  master_0_mon2scb, master_1_mon2scb, master_2_mon2scb, master_3_mon2scb,
-                    slave_0_mon2scb, slave_1_mon2scb, slave_2_mon2scb, slave_3_mon2scb,
+                    master_0_request_mon2scb, master_1_request_mon2scb, master_2_request_mon2scb, master_3_request_mon2scb,
+                    slave_0_request_mon2scb, slave_1_request_mon2scb, slave_2_request_mon2scb, slave_3_request_mon2scb,
+                    master_0_reply_mon2scb, master_1_reply_mon2scb, master_2_reply_mon2scb, master_3_reply_mon2scb,
+                    slave_0_reply_mon2scb, slave_1_reply_mon2scb, slave_2_reply_mon2scb, slave_3_reply_mon2scb);
+
+        scb = new(  master_0_request_mon2scb, master_1_request_mon2scb, master_2_request_mon2scb, master_3_request_mon2scb,
+                    slave_0_request_mon2scb, slave_1_request_mon2scb, slave_2_request_mon2scb, slave_3_request_mon2scb,
+                    master_0_reply_mon2scb, master_1_reply_mon2scb, master_2_reply_mon2scb, master_3_reply_mon2scb,
+                    slave_0_reply_mon2scb, slave_1_reply_mon2scb, slave_2_reply_mon2scb, slave_3_reply_mon2scb,
                     is_transcripts_on);                    
     endfunction
 
@@ -79,7 +96,6 @@ class environment;
     task PostTest();
         wait(seq.finished.triggered);
         wait(seq.qty_of_iterations_to_be_sended == master_driv.number_of_transaction);
-//        wait(driv.number_of_transaction == scb.number_of_merged_packets);
     endtask
 
     task Run();

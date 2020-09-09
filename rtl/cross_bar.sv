@@ -115,15 +115,4 @@ module cross_bar(
         );
     endgenerate   
 
-
-    logic [3:0] slave0, slave1, slave2, slave3;
-    always @(posedge clk)
-    begin
-        slave0 <= grant_from_arbiter_to_commutation_block[0];
-        slave1 <= grant_from_arbiter_to_commutation_block[1];
-        slave2 <= grant_from_arbiter_to_commutation_block[2];
-        slave3 <= grant_from_arbiter_to_commutation_block[3];
-    end
-
-
 endmodule
