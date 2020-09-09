@@ -70,7 +70,7 @@ program cross_bar_crv_test(
     initial begin
         reset_sem.get();
         test_order_sem.get();
-        $display("Starting coverage test...It takes few mins!");
+        $display("Starting coverage test...It takes a lot of time!");
         $display("Coverage test is running. You are able to pause whenever you want");
         env = new(  master_0_if, master_1_if, master_2_if, master_3_if, 
                     slave_0_if, slave_1_if, slave_2_if, slave_3_if,  
