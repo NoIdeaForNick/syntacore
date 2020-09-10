@@ -16,12 +16,12 @@ module master_request_listener #(
     begin
         if(request_from_master)
             unique case(address)
-                'b00: request_to_arbiters <= 'b0001;
-                'b01: request_to_arbiters <= 'b0010;
-                'b10: request_to_arbiters <= 'b0100;
-                'b11: request_to_arbiters <= 'b1000;
+                'b00: request_to_arbiters = 'b0001;
+                'b01: request_to_arbiters = 'b0010;
+                'b10: request_to_arbiters = 'b0100;
+                'b11: request_to_arbiters = 'b1000;
             endcase
-        else request_to_arbiters <= 0;    
+        else request_to_arbiters = 0;    
     end
 
 endmodule
